@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>한글패치 아카이브</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=IBM+Plex+Sans+KR:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg: #14161c;
+    --bg-card: #1c1f28;
+    --bg-card-hover: #21242e;
+    --line: #2b2f3b;
+    --ink: #eae7dd;
+    --ink-dim: #8d92a3;
+    --accent: #ffb84d;
+    --accent-dim: #7a5f30;
+
+    --c-snes: #8b7cf0;
+    --c-md:   #55b389;
+    --c-ps1:  #6c93c7;
+    --c-sat:  #c76b8f;
+    --c-dc:   #e0c25a;
+    --c-etc:  #8d92a3;
+  }
+
+  *{ box-sizing: border-box; }
+
+  html{ scroll-behavior: smooth; }
+
+  body{
+    margin:0;
+    background:
+      radial-gradient(1200px 600px at 15% -10%, #1b1f2b 0%, transparent 60%),
+      var(--bg);
+    color: var(--ink);
+    font-family: 'IBM Plex Sans KR', system-ui, sans-serif;
+    line-height: 1.6;
+  }
+
+  a{ color: inherit; }
+
+  .wrap{
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 0 24px;
+  }
+
+  /* ---------- Header ---------- */
+  header.hero{
+    padding: 88px 0 56px;
+    border-bottom: 1px solid var(--line);
+  }
+
+  .logo-row{
+    display:flex;
+    align-items:center;
+    gap:14px;
+    margin-bottom: 28px;
+  }
+
+  .logo-chip{
+    font-family: 'Press Start 2P', monospace;
+    font-size: 11px;
+    color: var(--bg);
+    background: var(--accent);
+    padding: 8px 10px;
+    border-radius: 3px;
+    letter-spacing: 0.5px;
+    line-height: 1;
+  }
+
+  .logo-row span.plain{
+    font-family: 'IBM Plex Mono', monospace;
+    color: var(--ink-dim);
+    font-size: 13px;
+  }
+
+  h1{
+    font-size: clamp(28px, 5vw, 42px);
+    font-weight: 700;
+    margin: 0 0 14px;
+    letter-spacing: -0.02em;
+  }
+
+  header.hero p{
+    color: var(--ink-dim);
+    max-width: 56ch;
+    margin: 0;
+    font-size: 15.5px;
+  }
+
+  .stat-row{
+    display:flex;
+    gap: 28px;
+    margin-top: 32px;
+    font-family: 'IBM Plex Mono', monospace;
+  }
+
+  .stat{ }
+  .stat b{
+    display:block;
+    font-size: 22px;
+    color: var(--ink);
+  }
+  .stat small{
+    color: var(--ink-dim);
+    font-size: 12px;
+    letter-spacing: 0.03em;
+  }
+
+  /* ---------- Filter row ---------- */
+  .filters{
+    display:flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    padding: 24px 0;
+    border-bottom: 1px solid var(--line);
+  }
+
+  .filter-btn{
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 12.5px;
+    background: transparent;
+    border: 1px solid var(--line);
+    color: var(--ink-dim);
+    padding: 7px 13px;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: border-color .15s ease, color .15s ease;
+  }
+  .filter-btn:hover{ border-color: var(--accent); color: var(--ink); }
+  .filter-btn.active{
+    border-color: var(--accent);
+    color: var(--accent);
+  }
+
+  /* ---------- Cards ---------- */
+  .grid{
+    display:grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 18px;
+    padding: 32px 0 80px;
+  }
+
+  .card{
+    position: relative;
+    background: var(--bg-card);
+    border: 1px solid var(--line);
+    border-radius: 10px;
+    padding: 20px 20px 18px;
+    transition: transform .15s ease, background .15s ease, border-color .15s ease;
+    /* cartridge-label corner notch, the signature element */
+    clip-path: polygon(0 14px, 14px 0, 100% 0, 100% 100%, 0 100%);
+  }
+
+  .card::before{
+    content:"";
+    position:absolute;
+    top:0; left:0;
+    width: 14px; height: 14px;
+    background: var(--bg);
+    clip-path: polygon(0 0, 14px 0, 0 14px);
+  }
+
+  .card:hover{
+    transform: translateY(-2px);
+    background: var(--bg-card-hover);
+    border-color: #3a3f4e;
+  }
+
+  .card-top{
+    display:flex;
+    justify-content: space-between;
+    align-items:flex-start;
+    gap: 10px;
+    margin-bottom: 14px;
+  }
+
+  .badge{
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.04em;
+    padding: 4px 9px;
+    border-radius: 4px;
+    color: var(--bg);
+    white-space: nowrap;
+  }
+
+  .badge.snes{ background: var(--c-snes); }
+  .badge.md{ background: var(--c-md); }
+  .badge.ps1{ background: var(--c-ps1); }
+  .badge.sat{ background: var(--c-sat); }
+  .badge.dc{ background: var(--c-dc); }
+  .badge.etc{ background: var(--c-etc); }
+
+  .status{
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 11px;
+    color: var(--ink-dim);
+  }
+  .status.done::before{ content:"● "; color:#55b389; }
+  .status.beta::before{ content:"● "; color: var(--accent); }
+  .status.wip::before{ content:"● "; color:#6c93c7; }
+
+  .game-title{
+    font-size: 17px;
+    font-weight: 600;
+    margin: 0 0 2px;
+  }
+  .game-title-orig{
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 12px;
+    color: var(--ink-dim);
+    margin: 0 0 14px;
+  }
+
+  .meta-row{
+    display:flex;
+    gap: 14px;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 11.5px;
+    color: var(--ink-dim);
+    margin-bottom: 16px;
+    padding-bottom: 16px;
+    border-bottom: 1px dashed var(--line);
+  }
+
+  .card-actions{
+    display:flex;
+    gap: 8px;
+  }
+
+  .btn{
+    flex:1;
+    text-align:center;
+    text-decoration:none;
+    font-size: 13px;
+    font-weight: 500;
+    padding: 9px 0;
+    border-radius: 6px;
+    transition: opacity .15s ease;
+  }
+  .btn:hover{ opacity: 0.85; }
+
+  .btn-dl{
+    background: var(--accent);
+    color: #1b1206;
+  }
+  .btn-gh{
+    background: transparent;
+    border: 1px solid var(--line);
+    color: var(--ink-dim);
+  }
+
+  /* ---------- Footer ---------- */
+  footer{
+    border-top: 1px solid var(--line);
+    padding: 28px 0 60px;
+    color: var(--ink-dim);
+    font-size: 13px;
+    font-family: 'IBM Plex Mono', monospace;
+    display:flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+  footer a{ color: var(--ink-dim); text-decoration: underline; text-underline-offset: 3px; }
+  footer a:hover{ color: var(--accent); }
+
+  @media (prefers-reduced-motion: reduce){
+    *{ transition: none !important; }
+  }
+</style>
+</head>
+<body>
+
+<div class="wrap">
+  <header class="hero">
+    <div class="logo-row">
+      <span class="logo-chip">KR</span>
+      <span class="plain">fan-translation archive</span>
+    </div>
+    <h1>한글패치 아카이브</h1>
+    <p>레트로 게임 한글화 패치를 모아둔 공간입니다. 플랫폼별로 정리했고, 각 패치는 진행 상태와 함께 다운로드 링크를 제공합니다.</p>
+    <div class="stat-row">
+      <div class="stat"><b>4</b><small>PATCHES RELEASED</small></div>
+      <div class="stat"><b>2</b><small>IN PROGRESS</small></div>
+      <div class="stat"><b>6</b><small>PLATFORMS</small></div>
+    </div>
+  </header>
+
+  <div class="filters">
+    <button class="filter-btn active" data-filter="all">전체</button>
+    <button class="filter-btn" data-filter="snes">SNES</button>
+    <button class="filter-btn" data-filter="md">Mega Drive</button>
+    <button class="filter-btn" data-filter="ps1">PS1</button>
+    <button class="filter-btn" data-filter="sat">Saturn</button>
+    <button class="filter-btn" data-filter="dc">Dreamcast</button>
+  </div>
+
+  <main class="grid" id="grid">
+
+    <article class="card" data-platform="snes">
+      <div class="card-top">
+        <span class="badge snes">SNES</span>
+        <span class="status done">완료</span>
+      </div>
+      <p class="game-title">예시 게임 제목</p>
+      <p class="game-title-orig">Example Game Title</p>
+      <div class="meta-row">
+        <span>v1.0</span>
+        <span>2.1MB</span>
+        <span>2026.05</span>
+      </div>
+      <div class="card-actions">
+        <a class="btn btn-dl" href="#">다운로드</a>
+        <a class="btn btn-gh" href="#">GitHub</a>
+      </div>
+    </article>
+
+    <article class="card" data-platform="md">
+      <div class="card-top">
+        <span class="badge md">MD</span>
+        <span class="status beta">베타</span>
+      </div>
+      <p class="game-title">예시 게임 제목 2</p>
+      <p class="game-title-orig">Example Game Title 2</p>
+      <div class="meta-row">
+        <span>v0.9</span>
+        <span>1.4MB</span>
+        <span>2026.06</span>
+      </div>
+      <div class="card-actions">
+        <a class="btn btn-dl" href="#">다운로드</a>
+        <a class="btn btn-gh" href="#">GitHub</a>
+      </div>
+    </article>
+
+    <article class="card" data-platform="ps1">
+      <div class="card-top">
+        <span class="badge ps1">PS1</span>
+        <span class="status wip">진행중</span>
+      </div>
+      <p class="game-title">예시 게임 제목 3</p>
+      <p class="game-title-orig">Example Game Title 3</p>
+      <div class="meta-row">
+        <span>—</span>
+        <span>—</span>
+        <span>진행중</span>
+      </div>
+      <div class="card-actions">
+        <a class="btn btn-dl" href="#" style="opacity:.4; pointer-events:none;">준비중</a>
+        <a class="btn btn-gh" href="#">GitHub</a>
+      </div>
+    </article>
+
+    <article class="card" data-platform="sat">
+      <div class="card-top">
+        <span class="badge sat">SATURN</span>
+        <span class="status done">완료</span>
+      </div>
+      <p class="game-title">예시 게임 제목 4</p>
+      <p class="game-title-orig">Example Game Title 4</p>
+      <div class="meta-row">
+        <span>v1.2</span>
+        <span>8.7MB</span>
+        <span>2026.03</span>
+      </div>
+      <div class="card-actions">
+        <a class="btn btn-dl" href="#">다운로드</a>
+        <a class="btn btn-gh" href="#">GitHub</a>
+      </div>
+    </article>
+
+  </main>
+
+  <footer>
+    <span>© 2026 한글패치 아카이브</span>
+    <span><a href="#">GitHub</a> · <a href="#">문의</a></span>
+  </footer>
+</div>
+
+<script>
+  const buttons = document.querySelectorAll('.filter-btn');
+  const cards = document.querySelectorAll('.card');
+  buttons.forEach(btn => {
+    btn.addEventListener('click', () => {
+      buttons.forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      const f = btn.dataset.filter;
+      cards.forEach(card => {
+        card.style.display = (f === 'all' || card.dataset.platform === f) ? '' : 'none';
+      });
+    });
+  });
+</script>
+
+</body>
+</html>
