@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>한글패치 아카이브</title>
+<title>NaVaMo Game Lab</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=IBM+Plex+Sans+KR:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
@@ -23,6 +23,7 @@
     --c-ps1:  #6c93c7;
     --c-sat:  #c76b8f;
     --c-dc:   #e0c25a;
+    --c-gba:  #7fb35a;
     --c-etc:  #8d92a3;
   }
 
@@ -111,38 +112,12 @@
     letter-spacing: 0.03em;
   }
 
-  /* ---------- Filter row ---------- */
-  .filters{
-    display:flex;
-    flex-wrap: wrap;
-    gap: 8px;
-    padding: 24px 0;
-    border-bottom: 1px solid var(--line);
-  }
-
-  .filter-btn{
-    font-family: 'IBM Plex Mono', monospace;
-    font-size: 12.5px;
-    background: transparent;
-    border: 1px solid var(--line);
-    color: var(--ink-dim);
-    padding: 7px 13px;
-    border-radius: 20px;
-    cursor: pointer;
-    transition: border-color .15s ease, color .15s ease;
-  }
-  .filter-btn:hover{ border-color: var(--accent); color: var(--ink); }
-  .filter-btn.active{
-    border-color: var(--accent);
-    color: var(--accent);
-  }
-
   /* ---------- Cards ---------- */
   .grid{
     display:grid;
     grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
     gap: 18px;
-    padding: 32px 0 80px;
+    padding: 40px 0 80px;
   }
 
   .card{
@@ -195,6 +170,7 @@
   .badge.ps1{ background: var(--c-ps1); }
   .badge.sat{ background: var(--c-sat); }
   .badge.dc{ background: var(--c-dc); }
+  .badge.gba{ background: var(--c-gba); }
   .badge.etc{ background: var(--c-etc); }
 
   .status{
@@ -205,6 +181,95 @@
   .status.done::before{ content:"● "; color:#55b389; }
   .status.beta::before{ content:"● "; color: var(--accent); }
   .status.wip::before{ content:"● "; color:#6c93c7; }
+
+  /* screenshot slot */
+  .shot{
+    position: relative;
+    width: 100%;
+    aspect-ratio: 3 / 2;
+    border-radius: 6px;
+    overflow: hidden;
+    margin-bottom: 14px;
+    background: #0f1116;
+    border: 1px solid var(--line);
+  }
+  .shot img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    image-rendering: pixelated;
+  }
+  .shot .shot-empty{
+    position:absolute; inset:0;
+    display:flex; align-items:center; justify-content:center;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 11px;
+    color: var(--ink-dim);
+    text-align:center;
+    padding: 10px;
+  }
+
+  /* screenshot carousel */
+  .shot-carousel{
+    position: relative;
+    width: 100%;
+    aspect-ratio: 3 / 2;
+    border-radius: 6px;
+    overflow: hidden;
+    margin-bottom: 14px;
+    background: #0a0b0e;
+    border: 1px solid var(--line);
+  }
+  .shot-carousel img{
+    position:absolute;
+    inset:0;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    background: #0a0b0e;
+    opacity: 0;
+    transition: opacity .2s ease;
+    pointer-events: none;
+  }
+  .shot-carousel img.active{
+    opacity: 1;
+    pointer-events: auto;
+  }
+  .shot-nav{
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    border: none;
+    background: rgba(20,22,28,0.68);
+    color: var(--ink);
+    font-size: 16px;
+    line-height: 1;
+    cursor: pointer;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    transition: background .15s ease;
+    z-index: 2;
+  }
+  .shot-nav:hover{ background: rgba(255,184,77,0.85); color:#1b1206; }
+  .shot-nav.prev{ left: 8px; }
+  .shot-nav.next{ right: 8px; }
+  .shot-count{
+    position: absolute;
+    bottom: 8px;
+    right: 10px;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 10.5px;
+    color: var(--ink);
+    background: rgba(20,22,28,0.68);
+    padding: 2px 7px;
+    border-radius: 10px;
+    z-index: 2;
+  }
 
   .game-title{
     font-size: 17px;
@@ -282,75 +347,48 @@
   <header class="hero">
     <div class="logo-row">
       <span class="logo-chip">KR</span>
-      <span class="plain">fan-translation archive</span>
+      <span class="plain">fan-translation lab</span>
     </div>
-    <h1>한글패치 아카이브</h1>
-    <p>레트로 게임 한글화 패치를 모아둔 공간입니다. 플랫폼별로 정리했고, 각 패치는 진행 상태와 함께 다운로드 링크를 제공합니다.</p>
+    <h1>NaVaMo Game Lab</h1>
+    <p>레트로 게임 한글화 패치를 만들고 배포하는 공간입니다. 각 프로젝트는 진행 상태와 함께 다운로드 링크를 제공합니다.</p>
     <div class="stat-row">
-      <div class="stat"><b>4</b><small>PATCHES RELEASED</small></div>
-      <div class="stat"><b>2</b><small>IN PROGRESS</small></div>
-      <div class="stat"><b>6</b><small>PLATFORMS</small></div>
+      <div class="stat"><b>0</b><small>PATCHES RELEASED</small></div>
+      <div class="stat"><b>1</b><small>IN PROGRESS</small></div>
+      <div class="stat"><b>1</b><small>PLATFORMS</small></div>
     </div>
   </header>
 
-  <div class="filters">
-    <button class="filter-btn active" data-filter="all">전체</button>
-    <button class="filter-btn" data-filter="snes">SNES</button>
-    <button class="filter-btn" data-filter="md">Mega Drive</button>
-    <button class="filter-btn" data-filter="ps1">PS1</button>
-    <button class="filter-btn" data-filter="sat">Saturn</button>
-    <button class="filter-btn" data-filter="dc">Dreamcast</button>
-  </div>
-
   <main class="grid" id="grid">
 
-    <article class="card" data-platform="snes">
+    <article class="card">
       <div class="card-top">
-        <span class="badge snes">SNES</span>
-        <span class="status done">완료</span>
-      </div>
-      <p class="game-title">예시 게임 제목</p>
-      <p class="game-title-orig">Example Game Title</p>
-      <div class="meta-row">
-        <span>v1.0</span>
-        <span>2.1MB</span>
-        <span>2026.05</span>
-      </div>
-      <div class="card-actions">
-        <a class="btn btn-dl" href="#">다운로드</a>
-        <a class="btn btn-gh" href="#">GitHub</a>
-      </div>
-    </article>
-
-    <article class="card" data-platform="md">
-      <div class="card-top">
-        <span class="badge md">MD</span>
-        <span class="status beta">베타</span>
-      </div>
-      <p class="game-title">예시 게임 제목 2</p>
-      <p class="game-title-orig">Example Game Title 2</p>
-      <div class="meta-row">
-        <span>v0.9</span>
-        <span>1.4MB</span>
-        <span>2026.06</span>
-      </div>
-      <div class="card-actions">
-        <a class="btn btn-dl" href="#">다운로드</a>
-        <a class="btn btn-gh" href="#">GitHub</a>
-      </div>
-    </article>
-
-    <article class="card" data-platform="ps1">
-      <div class="card-top">
-        <span class="badge ps1">PS1</span>
+        <span class="badge gba">GBA</span>
         <span class="status wip">진행중</span>
       </div>
-      <p class="game-title">예시 게임 제목 3</p>
-      <p class="game-title-orig">Example Game Title 3</p>
+
+      <div class="shot-carousel">
+        <img class="active" src="screenshots/zoe-gba-01.jpg" alt="ZOE GBA 한글화 스크린샷 1">
+        <img src="screenshots/zoe-gba-02.jpg" alt="ZOE GBA 한글화 스크린샷 2">
+        <img src="screenshots/zoe-gba-03.jpg" alt="ZOE GBA 한글화 스크린샷 3">
+        <img src="screenshots/zoe-gba-04.jpg" alt="ZOE GBA 한글화 스크린샷 4">
+        <img src="screenshots/zoe-gba-05.jpg" alt="ZOE GBA 한글화 스크린샷 5">
+        <img src="screenshots/zoe-gba-06.jpg" alt="ZOE GBA 한글화 스크린샷 6">
+        <img src="screenshots/zoe-gba-07.jpg" alt="ZOE GBA 한글화 스크린샷 7">
+        <img src="screenshots/zoe-gba-08.jpg" alt="ZOE GBA 한글화 스크린샷 8">
+        <img src="screenshots/zoe-gba-09.jpg" alt="ZOE GBA 한글화 스크린샷 9">
+        <img src="screenshots/zoe-gba-10.jpg" alt="ZOE GBA 한글화 스크린샷 10">
+        <img src="screenshots/zoe-gba-11.jpg" alt="ZOE GBA 한글화 스크린샷 11">
+        <button class="shot-nav prev" aria-label="이전 스크린샷" onclick="shotStep(this,-1)">‹</button>
+        <button class="shot-nav next" aria-label="다음 스크린샷" onclick="shotStep(this,1)">›</button>
+        <span class="shot-count">1 / 11</span>
+      </div>
+
+      <p class="game-title">존 오브 엔더스</p>
+      <p class="game-title-orig">Zone of Enders (GBA)</p>
       <div class="meta-row">
         <span>—</span>
         <span>—</span>
-        <span>진행중</span>
+        <span>작업중</span>
       </div>
       <div class="card-actions">
         <a class="btn btn-dl" href="#" style="opacity:.4; pointer-events:none;">준비중</a>
@@ -358,43 +396,41 @@
       </div>
     </article>
 
-    <article class="card" data-platform="sat">
-      <div class="card-top">
-        <span class="badge sat">SATURN</span>
-        <span class="status done">완료</span>
-      </div>
-      <p class="game-title">예시 게임 제목 4</p>
-      <p class="game-title-orig">Example Game Title 4</p>
-      <div class="meta-row">
-        <span>v1.2</span>
-        <span>8.7MB</span>
-        <span>2026.03</span>
-      </div>
-      <div class="card-actions">
-        <a class="btn btn-dl" href="#">다운로드</a>
-        <a class="btn btn-gh" href="#">GitHub</a>
-      </div>
-    </article>
-
   </main>
 
   <footer>
-    <span>© 2026 한글패치 아카이브</span>
+    <span>© 2026 NaVaMo Game Lab</span>
     <span><a href="#">GitHub</a> · <a href="#">문의</a></span>
   </footer>
 </div>
 
 <script>
-  const buttons = document.querySelectorAll('.filter-btn');
-  const cards = document.querySelectorAll('.card');
-  buttons.forEach(btn => {
-    btn.addEventListener('click', () => {
-      buttons.forEach(b => b.classList.remove('active'));
-      btn.classList.add('active');
-      const f = btn.dataset.filter;
-      cards.forEach(card => {
-        card.style.display = (f === 'all' || card.dataset.platform === f) ? '' : 'none';
-      });
+  function shotStep(btn, dir){
+    const box = btn.closest('.shot-carousel');
+    const imgs = box.querySelectorAll('img');
+    const count = box.querySelector('.shot-count');
+    let idx = 0;
+    imgs.forEach((img, i) => { if (img.classList.contains('active')) idx = i; });
+    imgs[idx].classList.remove('active');
+    idx = (idx + dir + imgs.length) % imgs.length;
+    imgs[idx].classList.add('active');
+    if (count) count.textContent = (idx + 1) + ' / ' + imgs.length;
+  }
+
+  // keyboard + swipe support per carousel
+  document.querySelectorAll('.shot-carousel').forEach(box => {
+    box.tabIndex = 0;
+    box.addEventListener('keydown', e => {
+      if (e.key === 'ArrowLeft') shotStep(box.querySelector('.prev'), -1);
+      if (e.key === 'ArrowRight') shotStep(box.querySelector('.next'), 1);
+    });
+    let startX = null;
+    box.addEventListener('touchstart', e => { startX = e.touches[0].clientX; });
+    box.addEventListener('touchend', e => {
+      if (startX === null) return;
+      const dx = e.changedTouches[0].clientX - startX;
+      if (Math.abs(dx) > 40) shotStep(box.querySelector(dx < 0 ? '.next' : '.prev'), dx < 0 ? 1 : -1);
+      startX = null;
     });
   });
 </script>
