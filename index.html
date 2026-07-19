@@ -21,9 +21,11 @@
     --c-snes: #8b7cf0;
     --c-md:   #55b389;
     --c-ps1:  #6c93c7;
+    --c-ps2:  #5b6fc9;
     --c-sat:  #c76b8f;
     --c-dc:   #e0c25a;
     --c-gba:  #7fb35a;
+    --c-ws:   #d1885c;
     --c-etc:  #8d92a3;
   }
 
@@ -190,9 +192,11 @@
   .badge.snes{ background: var(--c-snes); }
   .badge.md{ background: var(--c-md); }
   .badge.ps1{ background: var(--c-ps1); }
+  .badge.ps2{ background: var(--c-ps2); }
   .badge.sat{ background: var(--c-sat); }
   .badge.dc{ background: var(--c-dc); }
   .badge.gba{ background: var(--c-gba); }
+  .badge.ws{ background: var(--c-ws); }
   .badge.etc{ background: var(--c-etc); }
 
   .status{
@@ -342,6 +346,13 @@
     border: 1px solid var(--line);
     color: var(--ink-dim);
   }
+  .btn.is-disabled{
+    background: transparent;
+    border: 1px dashed var(--accent-dim);
+    color: var(--accent-dim);
+    cursor: not-allowed;
+    pointer-events: none;
+  }
 
   /* ---------- Footer ---------- */
   footer{
@@ -375,8 +386,8 @@
     <p>레트로 게임 한글화 패치를 만들고 배포하는 공간입니다. 각 프로젝트는 진행 상태와 함께 다운로드 링크를 제공합니다.</p>
     <div class="stat-row">
       <div class="stat"><b>1</b><small>PATCHES RELEASED</small></div>
-      <div class="stat"><b>0</b><small>IN PROGRESS</small></div>
-      <div class="stat"><b>1</b><small>PLATFORMS</small></div>
+      <div class="stat"><b>4</b><small>IN PROGRESS</small></div>
+      <div class="stat"><b>5</b><small>PLATFORMS</small></div>
     </div>
   </header>
 
@@ -419,6 +430,126 @@
       <div class="card-actions">
         <a class="btn btn-dl" href="https://github.com/navamog/ZoE-GBA/releases/download/v1.0/ZOE2173_kor.v1.0.zip">다운로드</a>
         <a class="btn btn-gh" href="https://github.com/navamog/ZoE-GBA">GitHub</a>
+      </div>
+    </article>
+
+    <article class="card">
+      <div class="card-top">
+        <span class="badge ps1">PS1</span>
+        <span class="status wip">진행중</span>
+      </div>
+
+      <div class="shot-carousel">
+        <img class="active" src="screenshots/tearring-ps1-01.jpg" alt="티어링 사가 한글화 스크린샷 1">
+        <img src="screenshots/tearring-ps1-02.jpg" alt="티어링 사가 한글화 스크린샷 2">
+        <img src="screenshots/tearring-ps1-03.jpg" alt="티어링 사가 한글화 스크린샷 3">
+        <img src="screenshots/tearring-ps1-04.jpg" alt="티어링 사가 한글화 스크린샷 4">
+        <img src="screenshots/tearring-ps1-05.jpg" alt="티어링 사가 한글화 스크린샷 5">
+        <button class="shot-nav prev" aria-label="이전 스크린샷" onclick="shotStep(this,-1)">‹</button>
+        <button class="shot-nav next" aria-label="다음 스크린샷" onclick="shotStep(this,1)">›</button>
+        <span class="shot-count">1 / 5</span>
+      </div>
+
+      <p class="game-title">티어링 사가</p>
+      <p class="game-title-orig">TearRing Saga (PS1)</p>
+      <div class="meta-row">
+        <span>—</span>
+        <span>—</span>
+        <span>작업중</span>
+      </div>
+      <div class="card-actions">
+        <a class="btn btn-dl is-disabled" href="#" aria-disabled="true">준비중</a>
+        <a class="btn btn-gh" href="#">GitHub</a>
+      </div>
+    </article>
+
+    <article class="card">
+      <div class="card-top">
+        <span class="badge snes">SNES</span>
+        <span class="status wip">진행중</span>
+      </div>
+
+      <div class="shot-carousel">
+        <img class="active" src="screenshots/langrisser2-snes-01.jpg" alt="랑그릿사2 한글화 스크린샷 1">
+        <img src="screenshots/langrisser2-snes-02.jpg" alt="랑그릿사2 한글화 스크린샷 2">
+        <img src="screenshots/langrisser2-snes-03.jpg" alt="랑그릿사2 한글화 스크린샷 3">
+        <img src="screenshots/langrisser2-snes-04.jpg" alt="랑그릿사2 한글화 스크린샷 4">
+        <img src="screenshots/langrisser2-snes-05.jpg" alt="랑그릿사2 한글화 스크린샷 5">
+        <button class="shot-nav prev" aria-label="이전 스크린샷" onclick="shotStep(this,-1)">‹</button>
+        <button class="shot-nav next" aria-label="다음 스크린샷" onclick="shotStep(this,1)">›</button>
+        <span class="shot-count">1 / 5</span>
+      </div>
+
+      <p class="game-title">랑그릿사 2</p>
+      <p class="game-title-orig">Langrisser II (SNES)</p>
+      <div class="meta-row">
+        <span>—</span>
+        <span>—</span>
+        <span>작업중</span>
+      </div>
+      <div class="card-actions">
+        <a class="btn btn-dl is-disabled" href="#" aria-disabled="true">준비중</a>
+        <a class="btn btn-gh" href="#">GitHub</a>
+      </div>
+    </article>
+
+    <article class="card">
+      <div class="card-top">
+        <span class="badge ws">WS</span>
+        <span class="status wip">진행중</span>
+      </div>
+
+      <div class="shot-carousel">
+        <img class="active" src="screenshots/langrisser-mil-ws-01.jpg" alt="랑그릿사 밀레니엄 한글화 스크린샷 1">
+        <img src="screenshots/langrisser-mil-ws-02.jpg" alt="랑그릿사 밀레니엄 한글화 스크린샷 2">
+        <img src="screenshots/langrisser-mil-ws-03.jpg" alt="랑그릿사 밀레니엄 한글화 스크린샷 3">
+        <img src="screenshots/langrisser-mil-ws-04.jpg" alt="랑그릿사 밀레니엄 한글화 스크린샷 4">
+        <img src="screenshots/langrisser-mil-ws-05.jpg" alt="랑그릿사 밀레니엄 한글화 스크린샷 5">
+        <button class="shot-nav prev" aria-label="이전 스크린샷" onclick="shotStep(this,-1)">‹</button>
+        <button class="shot-nav next" aria-label="다음 스크린샷" onclick="shotStep(this,1)">›</button>
+        <span class="shot-count">1 / 5</span>
+      </div>
+
+      <p class="game-title">랑그릿사 밀레니엄 The Last Century</p>
+      <p class="game-title-orig">LANGRISSER MILLENNIUM The Last Century (WS)</p>
+      <div class="meta-row">
+        <span>—</span>
+        <span>—</span>
+        <span>작업중</span>
+      </div>
+      <div class="card-actions">
+        <a class="btn btn-dl is-disabled" href="#" aria-disabled="true">준비중</a>
+        <a class="btn btn-gh" href="#">GitHub</a>
+      </div>
+    </article>
+
+    <article class="card">
+      <div class="card-top">
+        <span class="badge ps2">PS2</span>
+        <span class="status wip">진행중</span>
+      </div>
+
+      <div class="shot-carousel">
+        <img class="active" src="screenshots/berwick-ps2-01.jpg" alt="베르위크 사가 한글화 스크린샷 1">
+        <img src="screenshots/berwick-ps2-02.jpg" alt="베르위크 사가 한글화 스크린샷 2">
+        <img src="screenshots/berwick-ps2-03.jpg" alt="베르위크 사가 한글화 스크린샷 3">
+        <img src="screenshots/berwick-ps2-04.jpg" alt="베르위크 사가 한글화 스크린샷 4">
+        <img src="screenshots/berwick-ps2-05.jpg" alt="베르위크 사가 한글화 스크린샷 5">
+        <button class="shot-nav prev" aria-label="이전 스크린샷" onclick="shotStep(this,-1)">‹</button>
+        <button class="shot-nav next" aria-label="다음 스크린샷" onclick="shotStep(this,1)">›</button>
+        <span class="shot-count">1 / 5</span>
+      </div>
+
+      <p class="game-title">베르위크 사가</p>
+      <p class="game-title-orig">Berwick Saga (PS2)</p>
+      <div class="meta-row">
+        <span>—</span>
+        <span>—</span>
+        <span>작업중</span>
+      </div>
+      <div class="card-actions">
+        <a class="btn btn-dl is-disabled" href="#" aria-disabled="true">준비중</a>
+        <a class="btn btn-gh" href="#">GitHub</a>
       </div>
     </article>
 
