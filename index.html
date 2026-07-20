@@ -284,6 +284,22 @@
   .shot-nav:hover{ background: rgba(255,184,77,0.85); color:#1b1206; }
   .shot-nav.prev{ left: 8px; }
   .shot-nav.next{ right: 8px; }
+  /* 이미지가 하나도 없을 때 캐러셀 위에 뜨는 안내문 */
+  .shot-carousel .carousel-empty{
+    position:absolute; inset:0;
+    display:none;
+    align-items:center; justify-content:center;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 11px;
+    color: var(--ink-dim);
+    text-align:center;
+    padding: 10px;
+    z-index: 1;
+  }
+  .shot-carousel.is-empty .carousel-empty{ display:flex; }
+  .shot-carousel.is-empty .shot-nav,
+  .shot-carousel.is-empty .shot-count{ display:none; }
+
   .shot-count{
     position: absolute;
     bottom: 8px;
@@ -397,13 +413,18 @@
 
   <main class="grid" id="grid">
 
+    <!-- ============ 존 오브 엔더스 ============ -->
     <article class="card">
       <div class="card-top">
+        <!-- 기종 배지: snes / md / ps1 / ps2 / sat / dc / gba / ws / etc -->
         <span class="badge gba">GBA</span>
+        <!-- 상태: done(완료·초록) / beta(베타·주황) / wip(진행중·파랑) -->
         <span class="status done">완료</span>
       </div>
 
       <div class="shot-carousel">
+        <!-- 스크린샷: 파일을 screenshots/ 에 넣고 아래 경로만 맞추면 됩니다.
+             장수는 자유롭게 늘리거나 줄여도 되고, 없는 파일은 자동으로 숨겨집니다. -->
         <img class="active" src="screenshots/zoe-gba-01.jpg" alt="ZOE GBA 한글화 스크린샷 1">
         <img src="screenshots/zoe-gba-02.jpg" alt="ZOE GBA 한글화 스크린샷 2">
         <img src="screenshots/zoe-gba-03.jpg" alt="ZOE GBA 한글화 스크린샷 3">
@@ -418,6 +439,7 @@
         <button class="shot-nav prev" aria-label="이전 스크린샷" onclick="shotStep(this,-1)">‹</button>
         <button class="shot-nav next" aria-label="다음 스크린샷" onclick="shotStep(this,1)">›</button>
         <span class="shot-count">1 / 11</span>
+        <span class="carousel-empty">스크린샷 준비중</span>
       </div>
 
       <p class="game-title">존 오브 엔더스</p>
@@ -433,21 +455,32 @@
       </div>
     </article>
 
+    <!-- ============ 티어링 사가 ============ -->
     <article class="card">
       <div class="card-top">
+        <!-- 기종 배지: snes / md / ps1 / ps2 / sat / dc / gba / ws / etc -->
         <span class="badge ps1">PS1</span>
+        <!-- 상태: done(완료·초록) / beta(베타·주황) / wip(진행중·파랑) -->
         <span class="status wip">진행중</span>
       </div>
 
       <div class="shot-carousel">
+        <!-- 스크린샷: 파일을 screenshots/ 에 넣고 아래 경로만 맞추면 됩니다.
+             장수는 자유롭게 늘리거나 줄여도 되고, 없는 파일은 자동으로 숨겨집니다. -->
         <img class="active" src="screenshots/tearring-ps1-01.jpg" alt="티어링 사가 한글화 스크린샷 1">
         <img src="screenshots/tearring-ps1-02.jpg" alt="티어링 사가 한글화 스크린샷 2">
         <img src="screenshots/tearring-ps1-03.jpg" alt="티어링 사가 한글화 스크린샷 3">
         <img src="screenshots/tearring-ps1-04.jpg" alt="티어링 사가 한글화 스크린샷 4">
         <img src="screenshots/tearring-ps1-05.jpg" alt="티어링 사가 한글화 스크린샷 5">
+        <img src="screenshots/tearring-ps1-06.jpg" alt="티어링 사가 한글화 스크린샷 6">
+        <img src="screenshots/tearring-ps1-07.jpg" alt="티어링 사가 한글화 스크린샷 7">
+        <img src="screenshots/tearring-ps1-08.jpg" alt="티어링 사가 한글화 스크린샷 8">
+        <img src="screenshots/tearring-ps1-09.jpg" alt="티어링 사가 한글화 스크린샷 9">
+        <img src="screenshots/tearring-ps1-10.jpg" alt="티어링 사가 한글화 스크린샷 10">
         <button class="shot-nav prev" aria-label="이전 스크린샷" onclick="shotStep(this,-1)">‹</button>
         <button class="shot-nav next" aria-label="다음 스크린샷" onclick="shotStep(this,1)">›</button>
-        <span class="shot-count">1 / 5</span>
+        <span class="shot-count">1 / 10</span>
+        <span class="carousel-empty">스크린샷 준비중</span>
       </div>
 
       <p class="game-title">티어링 사가</p>
@@ -455,59 +488,81 @@
       <div class="meta-row">
         <span>—</span>
         <span>—</span>
-        <span>작업중 - 대사번역 70%, 메뉴/오프닝/그래픽 0%</span>
+        <span>작업중</span>
       </div>
       <div class="card-actions">
         <a class="btn btn-dl is-disabled" href="#" aria-disabled="true">준비중</a>
-        <a class="btn btn-gh" href="https://github.com/navamog/TearRing-Saga-KOR">GitHub</a>
+        <a class="btn btn-gh" href="#">GitHub</a>
       </div>
     </article>
 
+    <!-- ============ 랑그릿사 2 ============ -->
     <article class="card">
       <div class="card-top">
+        <!-- 기종 배지: snes / md / ps1 / ps2 / sat / dc / gba / ws / etc -->
         <span class="badge snes">SNES</span>
+        <!-- 상태: done(완료·초록) / beta(베타·주황) / wip(진행중·파랑) -->
         <span class="status wip">진행중</span>
       </div>
 
       <div class="shot-carousel">
+        <!-- 스크린샷: 파일을 screenshots/ 에 넣고 아래 경로만 맞추면 됩니다.
+             장수는 자유롭게 늘리거나 줄여도 되고, 없는 파일은 자동으로 숨겨집니다. -->
         <img class="active" src="screenshots/langrisser2-snes-01.jpg" alt="랑그릿사2 한글화 스크린샷 1">
         <img src="screenshots/langrisser2-snes-02.jpg" alt="랑그릿사2 한글화 스크린샷 2">
         <img src="screenshots/langrisser2-snes-03.jpg" alt="랑그릿사2 한글화 스크린샷 3">
         <img src="screenshots/langrisser2-snes-04.jpg" alt="랑그릿사2 한글화 스크린샷 4">
         <img src="screenshots/langrisser2-snes-05.jpg" alt="랑그릿사2 한글화 스크린샷 5">
+        <img src="screenshots/langrisser2-snes-06.jpg" alt="랑그릿사2 한글화 스크린샷 6">
+        <img src="screenshots/langrisser2-snes-07.jpg" alt="랑그릿사2 한글화 스크린샷 7">
+        <img src="screenshots/langrisser2-snes-08.jpg" alt="랑그릿사2 한글화 스크린샷 8">
+        <img src="screenshots/langrisser2-snes-09.jpg" alt="랑그릿사2 한글화 스크린샷 9">
+        <img src="screenshots/langrisser2-snes-10.jpg" alt="랑그릿사2 한글화 스크린샷 10">
         <button class="shot-nav prev" aria-label="이전 스크린샷" onclick="shotStep(this,-1)">‹</button>
         <button class="shot-nav next" aria-label="다음 스크린샷" onclick="shotStep(this,1)">›</button>
-        <span class="shot-count">1 / 5</span>
+        <span class="shot-count">1 / 10</span>
+        <span class="carousel-empty">스크린샷 준비중</span>
       </div>
 
       <p class="game-title">랑그릿사 2</p>
-      <p class="game-title-orig">Der Langrisser (SNES)</p>
+      <p class="game-title-orig">Langrisser II (SNES)</p>
       <div class="meta-row">
         <span>—</span>
         <span>—</span>
-        <span>작업중 - 대사번역 60%</span>
+        <span>작업중</span>
       </div>
       <div class="card-actions">
         <a class="btn btn-dl is-disabled" href="#" aria-disabled="true">준비중</a>
-        <a class="btn btn-gh" href="https://github.com/navamog/Langrisser2-SFC-KOR">GitHub</a>
+        <a class="btn btn-gh" href="#">GitHub</a>
       </div>
     </article>
 
+    <!-- ============ 랑그릿사 밀레니엄 The Last Century ============ -->
     <article class="card">
       <div class="card-top">
+        <!-- 기종 배지: snes / md / ps1 / ps2 / sat / dc / gba / ws / etc -->
         <span class="badge ws">WS</span>
+        <!-- 상태: done(완료·초록) / beta(베타·주황) / wip(진행중·파랑) -->
         <span class="status wip">진행중</span>
       </div>
 
       <div class="shot-carousel">
+        <!-- 스크린샷: 파일을 screenshots/ 에 넣고 아래 경로만 맞추면 됩니다.
+             장수는 자유롭게 늘리거나 줄여도 되고, 없는 파일은 자동으로 숨겨집니다. -->
         <img class="active" src="screenshots/langrisser-mil-ws-01.jpg" alt="랑그릿사 밀레니엄 한글화 스크린샷 1">
         <img src="screenshots/langrisser-mil-ws-02.jpg" alt="랑그릿사 밀레니엄 한글화 스크린샷 2">
         <img src="screenshots/langrisser-mil-ws-03.jpg" alt="랑그릿사 밀레니엄 한글화 스크린샷 3">
         <img src="screenshots/langrisser-mil-ws-04.jpg" alt="랑그릿사 밀레니엄 한글화 스크린샷 4">
         <img src="screenshots/langrisser-mil-ws-05.jpg" alt="랑그릿사 밀레니엄 한글화 스크린샷 5">
+        <img src="screenshots/langrisser-mil-ws-06.jpg" alt="랑그릿사 밀레니엄 한글화 스크린샷 6">
+        <img src="screenshots/langrisser-mil-ws-07.jpg" alt="랑그릿사 밀레니엄 한글화 스크린샷 7">
+        <img src="screenshots/langrisser-mil-ws-08.jpg" alt="랑그릿사 밀레니엄 한글화 스크린샷 8">
+        <img src="screenshots/langrisser-mil-ws-09.jpg" alt="랑그릿사 밀레니엄 한글화 스크린샷 9">
+        <img src="screenshots/langrisser-mil-ws-10.jpg" alt="랑그릿사 밀레니엄 한글화 스크린샷 10">
         <button class="shot-nav prev" aria-label="이전 스크린샷" onclick="shotStep(this,-1)">‹</button>
         <button class="shot-nav next" aria-label="다음 스크린샷" onclick="shotStep(this,1)">›</button>
-        <span class="shot-count">1 / 5</span>
+        <span class="shot-count">1 / 10</span>
+        <span class="carousel-empty">스크린샷 준비중</span>
       </div>
 
       <p class="game-title">랑그릿사 밀레니엄 The Last Century</p>
@@ -515,29 +570,40 @@
       <div class="meta-row">
         <span>—</span>
         <span>—</span>
-        <span>작업중 - 롬 분석 완료, 대사 번역 착수</span>
+        <span>작업중</span>
       </div>
       <div class="card-actions">
         <a class="btn btn-dl is-disabled" href="#" aria-disabled="true">준비중</a>
-        <a class="btn btn-gh" href="https://github.com/navamog/langrisser-mil-ws">GitHub</a>
+        <a class="btn btn-gh" href="#">GitHub</a>
       </div>
     </article>
 
+    <!-- ============ 베르위크 사가 ============ -->
     <article class="card">
       <div class="card-top">
+        <!-- 기종 배지: snes / md / ps1 / ps2 / sat / dc / gba / ws / etc -->
         <span class="badge ps2">PS2</span>
+        <!-- 상태: done(완료·초록) / beta(베타·주황) / wip(진행중·파랑) -->
         <span class="status wip">진행중</span>
       </div>
 
       <div class="shot-carousel">
+        <!-- 스크린샷: 파일을 screenshots/ 에 넣고 아래 경로만 맞추면 됩니다.
+             장수는 자유롭게 늘리거나 줄여도 되고, 없는 파일은 자동으로 숨겨집니다. -->
         <img class="active" src="screenshots/berwick-ps2-01.jpg" alt="베르위크 사가 한글화 스크린샷 1">
         <img src="screenshots/berwick-ps2-02.jpg" alt="베르위크 사가 한글화 스크린샷 2">
         <img src="screenshots/berwick-ps2-03.jpg" alt="베르위크 사가 한글화 스크린샷 3">
         <img src="screenshots/berwick-ps2-04.jpg" alt="베르위크 사가 한글화 스크린샷 4">
         <img src="screenshots/berwick-ps2-05.jpg" alt="베르위크 사가 한글화 스크린샷 5">
+        <img src="screenshots/berwick-ps2-06.jpg" alt="베르위크 사가 한글화 스크린샷 6">
+        <img src="screenshots/berwick-ps2-07.jpg" alt="베르위크 사가 한글화 스크린샷 7">
+        <img src="screenshots/berwick-ps2-08.jpg" alt="베르위크 사가 한글화 스크린샷 8">
+        <img src="screenshots/berwick-ps2-09.jpg" alt="베르위크 사가 한글화 스크린샷 9">
+        <img src="screenshots/berwick-ps2-10.jpg" alt="베르위크 사가 한글화 스크린샷 10">
         <button class="shot-nav prev" aria-label="이전 스크린샷" onclick="shotStep(this,-1)">‹</button>
         <button class="shot-nav next" aria-label="다음 스크린샷" onclick="shotStep(this,1)">›</button>
-        <span class="shot-count">1 / 5</span>
+        <span class="shot-count">1 / 10</span>
+        <span class="carousel-empty">스크린샷 준비중</span>
       </div>
 
       <p class="game-title">베르위크 사가</p>
@@ -545,7 +611,208 @@
       <div class="meta-row">
         <span>—</span>
         <span>—</span>
-        <span>작업중 - 롬 분석 중</span>
+        <span>작업중</span>
+      </div>
+      <div class="card-actions">
+        <a class="btn btn-dl is-disabled" href="#" aria-disabled="true">준비중</a>
+        <a class="btn btn-gh" href="#">GitHub</a>
+      </div>
+    </article>
+
+    <!-- ================================================================
+         아래는 빈 카드 템플릿 5개입니다.
+         고칠 곳은 딱 5군데:
+           1) badge  : 클래스(snes/md/ps1/ps2/sat/dc/gba/ws/etc)와 표시 문자
+           2) status : done(완료) / beta(베타) / wip(진행중) 중 하나
+           3) img    : screenshots/○○○-01.jpg ... 경로 (없는 파일은 자동 숨김)
+           4) 제목   : .game-title(한글) / .game-title-orig(원제 + 기종)
+           5) 버튼   : 배포 시 btn-dl 에서 is-disabled 를 지우고 href 에 링크 입력
+         카드를 더 늘리려면 <article class="card"> ... </article> 블록을 통째로 복사하세요.
+         ================================================================ -->
+
+    <!-- ---------- 빈 카드 1 ---------- -->
+    <article class="card">
+      <div class="card-top">
+        <span class="badge etc">???</span>
+        <span class="status wip">준비중</span>
+      </div>
+
+      <div class="shot-carousel">
+        <!-- 스크린샷 10장 슬롯. slot1 부분을 프로젝트 이름으로 바꿔주세요. -->
+        <img class="active" src="screenshots/slot1-01.jpg" alt="프로젝트 1 스크린샷 1">
+        <img src="screenshots/slot1-02.jpg" alt="프로젝트 1 스크린샷 2">
+        <img src="screenshots/slot1-03.jpg" alt="프로젝트 1 스크린샷 3">
+        <img src="screenshots/slot1-04.jpg" alt="프로젝트 1 스크린샷 4">
+        <img src="screenshots/slot1-05.jpg" alt="프로젝트 1 스크린샷 5">
+        <img src="screenshots/slot1-06.jpg" alt="프로젝트 1 스크린샷 6">
+        <img src="screenshots/slot1-07.jpg" alt="프로젝트 1 스크린샷 7">
+        <img src="screenshots/slot1-08.jpg" alt="프로젝트 1 스크린샷 8">
+        <img src="screenshots/slot1-09.jpg" alt="프로젝트 1 스크린샷 9">
+        <img src="screenshots/slot1-10.jpg" alt="프로젝트 1 스크린샷 10">
+        <button class="shot-nav prev" aria-label="이전 스크린샷" onclick="shotStep(this,-1)">‹</button>
+        <button class="shot-nav next" aria-label="다음 스크린샷" onclick="shotStep(this,1)">›</button>
+        <span class="shot-count">1 / 10</span>
+        <span class="carousel-empty">스크린샷 준비중</span>
+      </div>
+
+      <p class="game-title">(게임 제목)</p>
+      <p class="game-title-orig">(Original Title) (기종)</p>
+      <div class="meta-row">
+        <span>—</span>
+        <span>—</span>
+        <span>준비중</span>
+      </div>
+      <div class="card-actions">
+        <a class="btn btn-dl is-disabled" href="#" aria-disabled="true">준비중</a>
+        <a class="btn btn-gh" href="#">GitHub</a>
+      </div>
+    </article>
+
+    <!-- ---------- 빈 카드 2 ---------- -->
+    <article class="card">
+      <div class="card-top">
+        <span class="badge etc">???</span>
+        <span class="status wip">준비중</span>
+      </div>
+
+      <div class="shot-carousel">
+        <!-- 스크린샷 10장 슬롯. slot2 부분을 프로젝트 이름으로 바꿔주세요. -->
+        <img class="active" src="screenshots/slot2-01.jpg" alt="프로젝트 2 스크린샷 1">
+        <img src="screenshots/slot2-02.jpg" alt="프로젝트 2 스크린샷 2">
+        <img src="screenshots/slot2-03.jpg" alt="프로젝트 2 스크린샷 3">
+        <img src="screenshots/slot2-04.jpg" alt="프로젝트 2 스크린샷 4">
+        <img src="screenshots/slot2-05.jpg" alt="프로젝트 2 스크린샷 5">
+        <img src="screenshots/slot2-06.jpg" alt="프로젝트 2 스크린샷 6">
+        <img src="screenshots/slot2-07.jpg" alt="프로젝트 2 스크린샷 7">
+        <img src="screenshots/slot2-08.jpg" alt="프로젝트 2 스크린샷 8">
+        <img src="screenshots/slot2-09.jpg" alt="프로젝트 2 스크린샷 9">
+        <img src="screenshots/slot2-10.jpg" alt="프로젝트 2 스크린샷 10">
+        <button class="shot-nav prev" aria-label="이전 스크린샷" onclick="shotStep(this,-1)">‹</button>
+        <button class="shot-nav next" aria-label="다음 스크린샷" onclick="shotStep(this,1)">›</button>
+        <span class="shot-count">1 / 10</span>
+        <span class="carousel-empty">스크린샷 준비중</span>
+      </div>
+
+      <p class="game-title">(게임 제목)</p>
+      <p class="game-title-orig">(Original Title) (기종)</p>
+      <div class="meta-row">
+        <span>—</span>
+        <span>—</span>
+        <span>준비중</span>
+      </div>
+      <div class="card-actions">
+        <a class="btn btn-dl is-disabled" href="#" aria-disabled="true">준비중</a>
+        <a class="btn btn-gh" href="#">GitHub</a>
+      </div>
+    </article>
+
+    <!-- ---------- 빈 카드 3 ---------- -->
+    <article class="card">
+      <div class="card-top">
+        <span class="badge etc">???</span>
+        <span class="status wip">준비중</span>
+      </div>
+
+      <div class="shot-carousel">
+        <!-- 스크린샷 10장 슬롯. slot3 부분을 프로젝트 이름으로 바꿔주세요. -->
+        <img class="active" src="screenshots/slot3-01.jpg" alt="프로젝트 3 스크린샷 1">
+        <img src="screenshots/slot3-02.jpg" alt="프로젝트 3 스크린샷 2">
+        <img src="screenshots/slot3-03.jpg" alt="프로젝트 3 스크린샷 3">
+        <img src="screenshots/slot3-04.jpg" alt="프로젝트 3 스크린샷 4">
+        <img src="screenshots/slot3-05.jpg" alt="프로젝트 3 스크린샷 5">
+        <img src="screenshots/slot3-06.jpg" alt="프로젝트 3 스크린샷 6">
+        <img src="screenshots/slot3-07.jpg" alt="프로젝트 3 스크린샷 7">
+        <img src="screenshots/slot3-08.jpg" alt="프로젝트 3 스크린샷 8">
+        <img src="screenshots/slot3-09.jpg" alt="프로젝트 3 스크린샷 9">
+        <img src="screenshots/slot3-10.jpg" alt="프로젝트 3 스크린샷 10">
+        <button class="shot-nav prev" aria-label="이전 스크린샷" onclick="shotStep(this,-1)">‹</button>
+        <button class="shot-nav next" aria-label="다음 스크린샷" onclick="shotStep(this,1)">›</button>
+        <span class="shot-count">1 / 10</span>
+        <span class="carousel-empty">스크린샷 준비중</span>
+      </div>
+
+      <p class="game-title">(게임 제목)</p>
+      <p class="game-title-orig">(Original Title) (기종)</p>
+      <div class="meta-row">
+        <span>—</span>
+        <span>—</span>
+        <span>준비중</span>
+      </div>
+      <div class="card-actions">
+        <a class="btn btn-dl is-disabled" href="#" aria-disabled="true">준비중</a>
+        <a class="btn btn-gh" href="#">GitHub</a>
+      </div>
+    </article>
+
+    <!-- ---------- 빈 카드 4 ---------- -->
+    <article class="card">
+      <div class="card-top">
+        <span class="badge etc">???</span>
+        <span class="status wip">준비중</span>
+      </div>
+
+      <div class="shot-carousel">
+        <!-- 스크린샷 10장 슬롯. slot4 부분을 프로젝트 이름으로 바꿔주세요. -->
+        <img class="active" src="screenshots/slot4-01.jpg" alt="프로젝트 4 스크린샷 1">
+        <img src="screenshots/slot4-02.jpg" alt="프로젝트 4 스크린샷 2">
+        <img src="screenshots/slot4-03.jpg" alt="프로젝트 4 스크린샷 3">
+        <img src="screenshots/slot4-04.jpg" alt="프로젝트 4 스크린샷 4">
+        <img src="screenshots/slot4-05.jpg" alt="프로젝트 4 스크린샷 5">
+        <img src="screenshots/slot4-06.jpg" alt="프로젝트 4 스크린샷 6">
+        <img src="screenshots/slot4-07.jpg" alt="프로젝트 4 스크린샷 7">
+        <img src="screenshots/slot4-08.jpg" alt="프로젝트 4 스크린샷 8">
+        <img src="screenshots/slot4-09.jpg" alt="프로젝트 4 스크린샷 9">
+        <img src="screenshots/slot4-10.jpg" alt="프로젝트 4 스크린샷 10">
+        <button class="shot-nav prev" aria-label="이전 스크린샷" onclick="shotStep(this,-1)">‹</button>
+        <button class="shot-nav next" aria-label="다음 스크린샷" onclick="shotStep(this,1)">›</button>
+        <span class="shot-count">1 / 10</span>
+        <span class="carousel-empty">스크린샷 준비중</span>
+      </div>
+
+      <p class="game-title">(게임 제목)</p>
+      <p class="game-title-orig">(Original Title) (기종)</p>
+      <div class="meta-row">
+        <span>—</span>
+        <span>—</span>
+        <span>준비중</span>
+      </div>
+      <div class="card-actions">
+        <a class="btn btn-dl is-disabled" href="#" aria-disabled="true">준비중</a>
+        <a class="btn btn-gh" href="#">GitHub</a>
+      </div>
+    </article>
+
+    <!-- ---------- 빈 카드 5 ---------- -->
+    <article class="card">
+      <div class="card-top">
+        <span class="badge etc">???</span>
+        <span class="status wip">준비중</span>
+      </div>
+
+      <div class="shot-carousel">
+        <!-- 스크린샷 10장 슬롯. slot5 부분을 프로젝트 이름으로 바꿔주세요. -->
+        <img class="active" src="screenshots/slot5-01.jpg" alt="프로젝트 5 스크린샷 1">
+        <img src="screenshots/slot5-02.jpg" alt="프로젝트 5 스크린샷 2">
+        <img src="screenshots/slot5-03.jpg" alt="프로젝트 5 스크린샷 3">
+        <img src="screenshots/slot5-04.jpg" alt="프로젝트 5 스크린샷 4">
+        <img src="screenshots/slot5-05.jpg" alt="프로젝트 5 스크린샷 5">
+        <img src="screenshots/slot5-06.jpg" alt="프로젝트 5 스크린샷 6">
+        <img src="screenshots/slot5-07.jpg" alt="프로젝트 5 스크린샷 7">
+        <img src="screenshots/slot5-08.jpg" alt="프로젝트 5 스크린샷 8">
+        <img src="screenshots/slot5-09.jpg" alt="프로젝트 5 스크린샷 9">
+        <img src="screenshots/slot5-10.jpg" alt="프로젝트 5 스크린샷 10">
+        <button class="shot-nav prev" aria-label="이전 스크린샷" onclick="shotStep(this,-1)">‹</button>
+        <button class="shot-nav next" aria-label="다음 스크린샷" onclick="shotStep(this,1)">›</button>
+        <span class="shot-count">1 / 10</span>
+        <span class="carousel-empty">스크린샷 준비중</span>
+      </div>
+
+      <p class="game-title">(게임 제목)</p>
+      <p class="game-title-orig">(Original Title) (기종)</p>
+      <div class="meta-row">
+        <span>—</span>
+        <span>—</span>
+        <span>준비중</span>
       </div>
       <div class="card-actions">
         <a class="btn btn-dl is-disabled" href="#" aria-disabled="true">준비중</a>
@@ -562,25 +829,53 @@
 </div>
 
 <script>
+  /* ------------------------------------------------------------------
+     스크린샷 캐러셀
+     - 이미지 장수는 자동으로 계산됩니다 (10장이든 30장이든 그대로 동작).
+     - 파일이 없는 <img> 는 로드 실패 시 자동으로 제거되므로,
+       슬롯을 넉넉히 적어두고 준비되는 대로 파일만 채워 넣으면 됩니다.
+     ------------------------------------------------------------------ */
+
+  function refreshCarousel(box){
+    const imgs = box.querySelectorAll('img');
+    const count = box.querySelector('.shot-count');
+    if (!imgs.length){ box.classList.add('is-empty'); return; }
+    box.classList.remove('is-empty');
+    let active = box.querySelector('img.active');
+    if (!active){ imgs[0].classList.add('active'); active = imgs[0]; }
+    const idx = Array.prototype.indexOf.call(imgs, active);
+    if (count) count.textContent = (idx + 1) + ' / ' + imgs.length;
+  }
+
   function shotStep(btn, dir){
     const box = btn.closest('.shot-carousel');
     const imgs = box.querySelectorAll('img');
-    const count = box.querySelector('.shot-count');
+    if (imgs.length < 2) return;
     let idx = 0;
     imgs.forEach((img, i) => { if (img.classList.contains('active')) idx = i; });
     imgs[idx].classList.remove('active');
     idx = (idx + dir + imgs.length) % imgs.length;
     imgs[idx].classList.add('active');
-    if (count) count.textContent = (idx + 1) + ' / ' + imgs.length;
+    refreshCarousel(box);
   }
 
-  // keyboard + swipe support per carousel
   document.querySelectorAll('.shot-carousel').forEach(box => {
+    // 없는 이미지 정리
+    box.querySelectorAll('img').forEach(img => {
+      const drop = () => { img.remove(); refreshCarousel(box); };
+      img.addEventListener('error', drop);
+      if (img.complete && img.naturalWidth === 0) drop();
+    });
+    refreshCarousel(box);
+
+    // 키보드 좌우 이동
     box.tabIndex = 0;
     box.addEventListener('keydown', e => {
       if (e.key === 'ArrowLeft') shotStep(box.querySelector('.prev'), -1);
       if (e.key === 'ArrowRight') shotStep(box.querySelector('.next'), 1);
     });
+
+    // 모바일 스와이프
     let startX = null;
     box.addEventListener('touchstart', e => { startX = e.touches[0].clientX; });
     box.addEventListener('touchend', e => {
