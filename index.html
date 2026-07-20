@@ -189,6 +189,27 @@
     white-space: nowrap;
   }
 
+  /* 좌측 태그 묶음(기종 배지 + 장르) */
+  .tag-group{
+    display:flex;
+    align-items:center;
+    gap: 6px;
+    flex-wrap: wrap;
+  }
+
+  /* 장르 칩 — 텍스트만 바꾸면 됩니다 (SRPG / RPG / ACT / STG ...) */
+  .genre{
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.04em;
+    padding: 3px 8px;
+    border-radius: 4px;
+    border: 1px solid var(--line);
+    color: var(--ink-dim);
+    white-space: nowrap;
+  }
+
   .badge.snes{ background: var(--c-snes); }
   .badge.md{ background: var(--c-md); }
   .badge.ps1{ background: var(--c-ps1); }
@@ -401,8 +422,8 @@
     <h1>NaVaMo Game Lab</h1>
     <p>레트로 게임 한글화 패치를 만들고 배포하는 공간입니다. 각 프로젝트는 진행 상태와 함께 다운로드 링크를 제공합니다.</p>
     <div class="stat-row">
-      <div class="stat"><b>3</b><small>PATCHES RELEASED</small></div>
-      <div class="stat"><b>2</b><small>IN PROGRESS</small></div>
+      <div class="stat"><b>4</b><small>PATCHES RELEASED</small></div>
+      <div class="stat"><b>3</b><small>IN PROGRESS</small></div>
       <div class="stat"><b>5</b><small>PLATFORMS</small></div>
     </div>
   </header>
@@ -416,8 +437,12 @@
     <!-- ============ 존 오브 엔더스 ============ -->
     <article class="card">
       <div class="card-top">
-        <!-- 기종 배지: snes / md / ps1 / ps2 / sat / dc / gba / ws / etc -->
-        <span class="badge gba">GBA</span>
+        <div class="tag-group">
+          <!-- 기종 배지: snes / md / ps1 / ps2 / sat / dc / gba / ws / etc -->
+          <span class="badge gba">GBA</span>
+          <!-- 장르: 텍스트만 바꾸면 됩니다 -->
+          <span class="genre">SRPG</span>
+        </div>
         <!-- 상태: done(완료·초록) / beta(베타·주황) / wip(진행중·파랑) -->
         <span class="status done">완료</span>
       </div>
@@ -458,10 +483,14 @@
     <!-- ============ 티어링 사가 ============ -->
     <article class="card">
       <div class="card-top">
-        <!-- 기종 배지: snes / md / ps1 / ps2 / sat / dc / gba / ws / etc -->
-        <span class="badge ps1">PS1</span>
+        <div class="tag-group">
+          <!-- 기종 배지: snes / md / ps1 / ps2 / sat / dc / gba / ws / etc -->
+          <span class="badge ps1">PS1</span>
+          <!-- 장르: 텍스트만 바꾸면 됩니다 -->
+          <span class="genre">SRPG</span>
+        </div>
         <!-- 상태: done(완료·초록) / beta(베타·주황) / wip(진행중·파랑) -->
-        <span class="status wip">진행중</span>
+        <span class="status beta">베타</span>
       </div>
 
       <div class="shot-carousel">
@@ -486,21 +515,25 @@
       <p class="game-title">티어링 사가</p>
       <p class="game-title-orig">TearRing Saga (PS1)</p>
       <div class="meta-row">
+        <span>v0.5</span>
         <span>—</span>
-        <span>—</span>
-        <span>작업중</span>
+        <span>대사 한글화</span>
       </div>
       <div class="card-actions">
-        <a class="btn btn-dl is-disabled" href="#" aria-disabled="true">준비중</a>
-        <a class="btn btn-gh" href="#">GitHub</a>
+        <a class="btn btn-dl" href="https://github.com/navamog/TearRing-Saga-KOR/releases/download/v0.5/TearRingSaga_KR_v0.5.zip">다운로드</a>
+        <a class="btn btn-gh" href="https://github.com/navamog/TearRing-Saga-KOR">GitHub</a>
       </div>
     </article>
 
     <!-- ============ 랑그릿사 2 ============ -->
     <article class="card">
       <div class="card-top">
-        <!-- 기종 배지: snes / md / ps1 / ps2 / sat / dc / gba / ws / etc -->
-        <span class="badge snes">SNES</span>
+        <div class="tag-group">
+          <!-- 기종 배지: snes / md / ps1 / ps2 / sat / dc / gba / ws / etc -->
+          <span class="badge snes">SNES</span>
+          <!-- 장르: 텍스트만 바꾸면 됩니다 -->
+          <span class="genre">SRPG</span>
+        </div>
         <!-- 상태: done(완료·초록) / beta(베타·주황) / wip(진행중·파랑) -->
         <span class="status done">완료</span>
       </div>
@@ -525,7 +558,7 @@
       </div>
 
       <p class="game-title">랑그릿사 2</p>
-      <p class="game-title-orig">Langrisser II (SNES)</p>
+      <p class="game-title-orig">Der Langrisser (SNES)</p>
       <div class="meta-row">
         <span>v1.0</span>
         <span>—</span>
@@ -540,8 +573,12 @@
     <!-- ============ 랑그릿사 밀레니엄 The Last Century ============ -->
     <article class="card">
       <div class="card-top">
-        <!-- 기종 배지: snes / md / ps1 / ps2 / sat / dc / gba / ws / etc -->
-        <span class="badge ws">WS</span>
+        <div class="tag-group">
+          <!-- 기종 배지: snes / md / ps1 / ps2 / sat / dc / gba / ws / etc -->
+          <span class="badge ws">WS</span>
+          <!-- 장르: 텍스트만 바꾸면 됩니다 -->
+          <span class="genre">SRPG</span>
+        </div>
         <!-- 상태: done(완료·초록) / beta(베타·주황) / wip(진행중·파랑) -->
         <span class="status beta">베타</span>
       </div>
@@ -581,8 +618,12 @@
     <!-- ============ 베르위크 사가 ============ -->
     <article class="card">
       <div class="card-top">
-        <!-- 기종 배지: snes / md / ps1 / ps2 / sat / dc / gba / ws / etc -->
-        <span class="badge ps2">PS2</span>
+        <div class="tag-group">
+          <!-- 기종 배지: snes / md / ps1 / ps2 / sat / dc / gba / ws / etc -->
+          <span class="badge ps2">PS2</span>
+          <!-- 장르: 텍스트만 바꾸면 됩니다 -->
+          <span class="genre">SRPG</span>
+        </div>
         <!-- 상태: done(완료·초록) / beta(베타·주황) / wip(진행중·파랑) -->
         <span class="status wip">진행중</span>
       </div>
@@ -607,7 +648,97 @@
       </div>
 
       <p class="game-title">베르위크 사가</p>
-      <p class="game-title-orig">Berwick Saga (PS2)</p>
+      <p class="game-title-orig">Berwick Saga - Lazberia Chronicle Chapter 174 (PS2)</p>
+      <div class="meta-row">
+        <span>—</span>
+        <span>—</span>
+        <span>작업중</span>
+      </div>
+      <div class="card-actions">
+        <a class="btn btn-dl is-disabled" href="#" aria-disabled="true">준비중</a>
+        <a class="btn btn-gh" href="#">GitHub</a>
+      </div>
+    </article>
+
+    <!-- ============ 파이어 엠블렘 - 비전 퀘스트 ============ -->
+    <article class="card">
+      <div class="card-top">
+        <div class="tag-group">
+          <!-- 기종 배지: snes / md / ps1 / ps2 / sat / dc / gba / ws / etc -->
+          <span class="badge gba">GBA</span>
+          <!-- 장르: 텍스트만 바꾸면 됩니다 -->
+          <span class="genre">SRPG</span>
+        </div>
+        <!-- 상태: done(완료·초록) / beta(베타·주황) / wip(진행중·파랑) -->
+        <span class="status wip">진행중</span>
+      </div>
+
+      <div class="shot-carousel">
+        <!-- 스크린샷: screenshots/fe-visionquest-gba-01.jpg ~ -10.jpg
+             장수는 자유롭게 늘리거나 줄여도 되고, 없는 파일은 자동으로 숨겨집니다. -->
+        <img class="active" src="screenshots/fe-visionquest-gba-01.jpg" alt="파이어 엠블렘 비전 퀘스트 한글화 스크린샷 1">
+        <img src="screenshots/fe-visionquest-gba-02.jpg" alt="파이어 엠블렘 비전 퀘스트 한글화 스크린샷 2">
+        <img src="screenshots/fe-visionquest-gba-03.jpg" alt="파이어 엠블렘 비전 퀘스트 한글화 스크린샷 3">
+        <img src="screenshots/fe-visionquest-gba-04.jpg" alt="파이어 엠블렘 비전 퀘스트 한글화 스크린샷 4">
+        <img src="screenshots/fe-visionquest-gba-05.jpg" alt="파이어 엠블렘 비전 퀘스트 한글화 스크린샷 5">
+        <img src="screenshots/fe-visionquest-gba-06.jpg" alt="파이어 엠블렘 비전 퀘스트 한글화 스크린샷 6">
+        <img src="screenshots/fe-visionquest-gba-07.jpg" alt="파이어 엠블렘 비전 퀘스트 한글화 스크린샷 7">
+        <img src="screenshots/fe-visionquest-gba-08.jpg" alt="파이어 엠블렘 비전 퀘스트 한글화 스크린샷 8">
+        <img src="screenshots/fe-visionquest-gba-09.jpg" alt="파이어 엠블렘 비전 퀘스트 한글화 스크린샷 9">
+        <img src="screenshots/fe-visionquest-gba-10.jpg" alt="파이어 엠블렘 비전 퀘스트 한글화 스크린샷 10">
+        <button class="shot-nav prev" aria-label="이전 스크린샷" onclick="shotStep(this,-1)">‹</button>
+        <button class="shot-nav next" aria-label="다음 스크린샷" onclick="shotStep(this,1)">›</button>
+        <span class="shot-count">1 / 10</span>
+        <span class="carousel-empty">스크린샷 준비중</span>
+      </div>
+
+      <p class="game-title">파이어 엠블렘 - 비전 퀘스트</p>
+      <p class="game-title-orig">Fire Emblem: Vision Quest (GBA)</p>
+      <div class="meta-row">
+        <span>—</span>
+        <span>—</span>
+        <span>작업중</span>
+      </div>
+      <div class="card-actions">
+        <a class="btn btn-dl is-disabled" href="#" aria-disabled="true">준비중</a>
+        <a class="btn btn-gh" href="#">GitHub</a>
+      </div>
+    </article>
+
+    <!-- ============ 파이어 엠블렘 - 모로우의 황금향 ============ -->
+    <article class="card">
+      <div class="card-top">
+        <div class="tag-group">
+          <!-- 기종 배지: snes / md / ps1 / ps2 / sat / dc / gba / ws / etc -->
+          <span class="badge gba">GBA</span>
+          <!-- 장르: 텍스트만 바꾸면 됩니다 -->
+          <span class="genre">SRPG</span>
+        </div>
+        <!-- 상태: done(완료·초록) / beta(베타·주황) / wip(진행중·파랑) -->
+        <span class="status wip">진행중</span>
+      </div>
+
+      <div class="shot-carousel">
+        <!-- 스크린샷: screenshots/fe-morrow-gba-01.jpg ~ -10.jpg
+             장수는 자유롭게 늘리거나 줄여도 되고, 없는 파일은 자동으로 숨겨집니다. -->
+        <img class="active" src="screenshots/fe-morrow-gba-01.jpg" alt="파이어 엠블렘 모로우의 황금향 한글화 스크린샷 1">
+        <img src="screenshots/fe-morrow-gba-02.jpg" alt="파이어 엠블렘 모로우의 황금향 한글화 스크린샷 2">
+        <img src="screenshots/fe-morrow-gba-03.jpg" alt="파이어 엠블렘 모로우의 황금향 한글화 스크린샷 3">
+        <img src="screenshots/fe-morrow-gba-04.jpg" alt="파이어 엠블렘 모로우의 황금향 한글화 스크린샷 4">
+        <img src="screenshots/fe-morrow-gba-05.jpg" alt="파이어 엠블렘 모로우의 황금향 한글화 스크린샷 5">
+        <img src="screenshots/fe-morrow-gba-06.jpg" alt="파이어 엠블렘 모로우의 황금향 한글화 스크린샷 6">
+        <img src="screenshots/fe-morrow-gba-07.jpg" alt="파이어 엠블렘 모로우의 황금향 한글화 스크린샷 7">
+        <img src="screenshots/fe-morrow-gba-08.jpg" alt="파이어 엠블렘 모로우의 황금향 한글화 스크린샷 8">
+        <img src="screenshots/fe-morrow-gba-09.jpg" alt="파이어 엠블렘 모로우의 황금향 한글화 스크린샷 9">
+        <img src="screenshots/fe-morrow-gba-10.jpg" alt="파이어 엠블렘 모로우의 황금향 한글화 스크린샷 10">
+        <button class="shot-nav prev" aria-label="이전 스크린샷" onclick="shotStep(this,-1)">‹</button>
+        <button class="shot-nav next" aria-label="다음 스크린샷" onclick="shotStep(this,1)">›</button>
+        <span class="shot-count">1 / 10</span>
+        <span class="carousel-empty">스크린샷 준비중</span>
+      </div>
+
+      <p class="game-title">파이어 엠블렘 - 모로우의 황금향</p>
+      <p class="game-title-orig">Fire Emblem: The Morrow's Golden Country (GBA)</p>
       <div class="meta-row">
         <span>—</span>
         <span>—</span>
@@ -633,7 +764,12 @@
     <!-- ---------- 빈 카드 1 ---------- -->
     <article class="card">
       <div class="card-top">
-        <span class="badge etc">???</span>
+        <div class="tag-group">
+          <!-- 기종 배지: snes / md / ps1 / ps2 / sat / dc / gba / ws / etc -->
+          <span class="badge etc">???</span>
+          <!-- 장르: 텍스트만 바꾸면 됩니다 -->
+          <span class="genre">SRPG</span>
+        </div>
         <span class="status wip">준비중</span>
       </div>
 
@@ -671,7 +807,12 @@
     <!-- ---------- 빈 카드 2 ---------- -->
     <article class="card">
       <div class="card-top">
-        <span class="badge etc">???</span>
+        <div class="tag-group">
+          <!-- 기종 배지: snes / md / ps1 / ps2 / sat / dc / gba / ws / etc -->
+          <span class="badge etc">???</span>
+          <!-- 장르: 텍스트만 바꾸면 됩니다 -->
+          <span class="genre">SRPG</span>
+        </div>
         <span class="status wip">준비중</span>
       </div>
 
@@ -709,7 +850,12 @@
     <!-- ---------- 빈 카드 3 ---------- -->
     <article class="card">
       <div class="card-top">
-        <span class="badge etc">???</span>
+        <div class="tag-group">
+          <!-- 기종 배지: snes / md / ps1 / ps2 / sat / dc / gba / ws / etc -->
+          <span class="badge etc">???</span>
+          <!-- 장르: 텍스트만 바꾸면 됩니다 -->
+          <span class="genre">SRPG</span>
+        </div>
         <span class="status wip">준비중</span>
       </div>
 
@@ -747,7 +893,12 @@
     <!-- ---------- 빈 카드 4 ---------- -->
     <article class="card">
       <div class="card-top">
-        <span class="badge etc">???</span>
+        <div class="tag-group">
+          <!-- 기종 배지: snes / md / ps1 / ps2 / sat / dc / gba / ws / etc -->
+          <span class="badge etc">???</span>
+          <!-- 장르: 텍스트만 바꾸면 됩니다 -->
+          <span class="genre">SRPG</span>
+        </div>
         <span class="status wip">준비중</span>
       </div>
 
@@ -785,7 +936,12 @@
     <!-- ---------- 빈 카드 5 ---------- -->
     <article class="card">
       <div class="card-top">
-        <span class="badge etc">???</span>
+        <div class="tag-group">
+          <!-- 기종 배지: snes / md / ps1 / ps2 / sat / dc / gba / ws / etc -->
+          <span class="badge etc">???</span>
+          <!-- 장르: 텍스트만 바꾸면 됩니다 -->
+          <span class="genre">SRPG</span>
+        </div>
         <span class="status wip">준비중</span>
       </div>
 
