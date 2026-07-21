@@ -357,6 +357,66 @@
     border-bottom: 1px dashed var(--line);
   }
 
+  /* ---------- 패치 내역(변경 이력) ---------- */
+  /* 카드에 <details class="changelog"> 를 넣으면 접히는 타임라인이 생깁니다.
+     맨 위 <li> 가 최신 버전이며, 그 내용이 위쪽 .meta-row 에 자동 반영됩니다. */
+  .changelog{
+    margin: -6px 0 16px;
+  }
+  .changelog > summary{
+    list-style: none;
+    cursor: pointer;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 11.5px;
+    color: var(--ink-dim);
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: 2px 0;
+    transition: color .15s ease;
+  }
+  .changelog > summary::-webkit-details-marker{ display:none; }
+  .changelog > summary::before{
+    content: "▸";
+    font-size: 10px;
+    transition: transform .15s ease;
+  }
+  .changelog[open] > summary::before{ transform: rotate(90deg); }
+  .changelog > summary:hover{ color: var(--accent); }
+
+  .log{
+    list-style: none;
+    margin: 10px 0 0;
+    padding: 0 0 0 16px;
+    border-left: 1px dashed var(--line);
+  }
+  .log li{
+    position: relative;
+    padding: 0 0 12px 0;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 11.5px;
+    line-height: 1.55;
+    color: var(--ink-dim);
+  }
+  .log li:last-child{ padding-bottom: 2px; }
+  .log li::before{
+    content: "";
+    position: absolute;
+    left: -19px;
+    top: 6px;
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--line);
+  }
+  /* 최신 항목만 강조 */
+  .log li:first-child::before{ background: var(--accent); }
+  .log li:first-child .log-ver{ color: var(--accent); }
+
+  .log-ver{ color: var(--ink); font-weight: 500; margin-right: 8px; }
+  .log-date{ margin-right: 8px; }
+  .log-note{ display: block; margin-top: 1px; }
+
   .card-actions{
     display:flex;
     gap: 8px;
@@ -474,6 +534,22 @@
         <span>2026-07-14</span>
         <span>정식 배포</span>
       </div>
+            <details class="changelog">
+        <summary>패치 내역</summary>
+        <ol class="log">
+        <!-- 새 버전이 나오면 아래 <li> 를 복사해서 *맨 위에* 붙여넣으세요.
+             맨 위 항목이 최신으로 간주되어 위쪽 요약줄(.meta-row)에 자동 반영됩니다.
+          <li>
+            <span class="log-ver">v1.01</span><span class="log-date">2026-07-20</span>
+            <span class="log-note">명령어 표시 오류 긴급 수정</span>
+          </li>
+        -->
+          <li>
+            <span class="log-ver">v1.0</span><span class="log-date">2026-07-14</span>
+            <span class="log-note">정식 배포</span>
+          </li>
+        </ol>
+      </details>
       <div class="card-actions">
         <a class="btn btn-dl" href="https://github.com/navamog/ZoE-GBA/releases/download/v1.0/ZOE2173_kor.v1.0.zip">다운로드</a>
         <a class="btn btn-gh" href="https://github.com/navamog/ZoE-GBA">GitHub</a>
@@ -519,6 +595,15 @@
         <span>—</span>
         <span>대사만 한글화</span>
       </div>
+            <details class="changelog">
+        <summary>패치 내역</summary>
+        <ol class="log">
+          <li>
+            <span class="log-ver">v0.5</span><span class="log-date">2026-07-20</span>
+            <span class="log-note">대사만 한글</span>
+          </li>
+        </ol>
+      </details>
       <div class="card-actions">
         <a class="btn btn-dl" href="https://github.com/navamog/TearRing-Saga-KOR/releases/download/v0.5/TearRingSaga_KR_v0.5.zip">다운로드</a>
         <a class="btn btn-gh" href="https://github.com/navamog/TearRing-Saga-KOR">GitHub</a>
@@ -564,8 +649,21 @@
         <span>—</span>
         <span>정식 배포</span>
       </div>
+            <details class="changelog">
+        <summary>패치 내역</summary>
+        <ol class="log">
+          <li>
+            <span class="log-ver">v1.01</span><span class="log-date">2026-07-21</span>
+            <span class="log-note">명령표시 오류수정</span>
+          </li>
+          <li>
+            <span class="log-ver">v1.0</span><span class="log-date">2026-07-20</span>
+            <span class="log-note">정식 배포</span>
+          </li>
+        </ol>
+      </details>
       <div class="card-actions">
-        <a class="btn btn-dl" href="https://github.com/navamog/Langrisser2-SFC-KOR/releases/download/v1.0/DerLangrisser_Korean_v1.0.zip">다운로드</a>
+        <a class="btn btn-dl" href="https://github.com/navamog/Langrisser2-SFC-KOR/releases/download/v1.01/DerLangrisser_Korean_v1.01.zip">다운로드</a>
         <a class="btn btn-gh" href="https://github.com/navamog/Langrisser2-SFC-KOR">GitHub</a>
       </div>
     </article>
@@ -609,6 +707,15 @@
         <span>—</span>
         <span>베타: 대사 및 일부 UI</span>
       </div>
+            <details class="changelog">
+        <summary>패치 내역</summary>
+        <ol class="log">
+          <li>
+            <span class="log-ver">v0.9</span><span class="log-date">2026-07-20</span>
+            <span class="log-note">대사 및 Main UI</span>
+          </li>
+        </ol>
+      </details>
       <div class="card-actions">
         <a class="btn btn-dl" href="https://github.com/navamog/langrisser-mil-ws/releases/download/v0.9/Langrisser.Millennium.WS.KOR.v0.9.zip">다운로드</a>
         <a class="btn btn-gh" href="https://github.com/navamog/langrisser-mil-ws">GitHub</a>
@@ -654,6 +761,17 @@
         <span>—</span>
         <span>작업중</span>
       </div>
+      <details class="changelog">
+        <summary>패치 내역</summary>
+        <ol class="log">
+          <!-- 새 버전이 나오면 <li> 를 복사해 *맨 위에* 붙여넣으세요.
+               맨 위 항목이 최신으로 간주되어 위 요약줄(.meta-row)에 자동 반영됩니다. -->
+          <li>
+            <span class="log-ver">—</span><span class="log-date">—</span>
+            <span class="log-note">작업중</span>
+          </li>
+        </ol>
+      </details>
       <div class="card-actions">
         <a class="btn btn-dl is-disabled" href="#" aria-disabled="true">준비중</a>
         <a class="btn btn-gh" href="#">GitHub</a>
@@ -699,6 +817,17 @@
         <span>—</span>
         <span>작업중</span>
       </div>
+      <details class="changelog">
+        <summary>패치 내역</summary>
+        <ol class="log">
+          <!-- 새 버전이 나오면 <li> 를 복사해 *맨 위에* 붙여넣으세요.
+               맨 위 항목이 최신으로 간주되어 위 요약줄(.meta-row)에 자동 반영됩니다. -->
+          <li>
+            <span class="log-ver">—</span><span class="log-date">—</span>
+            <span class="log-note">작업중</span>
+          </li>
+        </ol>
+      </details>
       <div class="card-actions">
         <a class="btn btn-dl is-disabled" href="#" aria-disabled="true">준비중</a>
         <a class="btn btn-gh" href="#">GitHub</a>
@@ -744,6 +873,17 @@
         <span>—</span>
         <span>작업중</span>
       </div>
+      <details class="changelog">
+        <summary>패치 내역</summary>
+        <ol class="log">
+          <!-- 새 버전이 나오면 <li> 를 복사해 *맨 위에* 붙여넣으세요.
+               맨 위 항목이 최신으로 간주되어 위 요약줄(.meta-row)에 자동 반영됩니다. -->
+          <li>
+            <span class="log-ver">—</span><span class="log-date">—</span>
+            <span class="log-note">작업중</span>
+          </li>
+        </ol>
+      </details>
       <div class="card-actions">
         <a class="btn btn-dl is-disabled" href="#" aria-disabled="true">준비중</a>
         <a class="btn btn-gh" href="#">GitHub</a>
@@ -798,6 +938,17 @@
         <span>—</span>
         <span>준비중</span>
       </div>
+      <details class="changelog">
+        <summary>패치 내역</summary>
+        <ol class="log">
+          <!-- 새 버전이 나오면 <li> 를 복사해 *맨 위에* 붙여넣으세요.
+               맨 위 항목이 최신으로 간주되어 위 요약줄(.meta-row)에 자동 반영됩니다. -->
+          <li>
+            <span class="log-ver">—</span><span class="log-date">—</span>
+            <span class="log-note">작업중</span>
+          </li>
+        </ol>
+      </details>
       <div class="card-actions">
         <a class="btn btn-dl is-disabled" href="#" aria-disabled="true">준비중</a>
         <a class="btn btn-gh" href="#">GitHub</a>
@@ -841,6 +992,17 @@
         <span>—</span>
         <span>준비중</span>
       </div>
+      <details class="changelog">
+        <summary>패치 내역</summary>
+        <ol class="log">
+          <!-- 새 버전이 나오면 <li> 를 복사해 *맨 위에* 붙여넣으세요.
+               맨 위 항목이 최신으로 간주되어 위 요약줄(.meta-row)에 자동 반영됩니다. -->
+          <li>
+            <span class="log-ver">—</span><span class="log-date">—</span>
+            <span class="log-note">작업중</span>
+          </li>
+        </ol>
+      </details>
       <div class="card-actions">
         <a class="btn btn-dl is-disabled" href="#" aria-disabled="true">준비중</a>
         <a class="btn btn-gh" href="#">GitHub</a>
@@ -884,6 +1046,17 @@
         <span>—</span>
         <span>준비중</span>
       </div>
+      <details class="changelog">
+        <summary>패치 내역</summary>
+        <ol class="log">
+          <!-- 새 버전이 나오면 <li> 를 복사해 *맨 위에* 붙여넣으세요.
+               맨 위 항목이 최신으로 간주되어 위 요약줄(.meta-row)에 자동 반영됩니다. -->
+          <li>
+            <span class="log-ver">—</span><span class="log-date">—</span>
+            <span class="log-note">작업중</span>
+          </li>
+        </ol>
+      </details>
       <div class="card-actions">
         <a class="btn btn-dl is-disabled" href="#" aria-disabled="true">준비중</a>
         <a class="btn btn-gh" href="#">GitHub</a>
@@ -927,6 +1100,17 @@
         <span>—</span>
         <span>준비중</span>
       </div>
+      <details class="changelog">
+        <summary>패치 내역</summary>
+        <ol class="log">
+          <!-- 새 버전이 나오면 <li> 를 복사해 *맨 위에* 붙여넣으세요.
+               맨 위 항목이 최신으로 간주되어 위 요약줄(.meta-row)에 자동 반영됩니다. -->
+          <li>
+            <span class="log-ver">—</span><span class="log-date">—</span>
+            <span class="log-note">작업중</span>
+          </li>
+        </ol>
+      </details>
       <div class="card-actions">
         <a class="btn btn-dl is-disabled" href="#" aria-disabled="true">준비중</a>
         <a class="btn btn-gh" href="#">GitHub</a>
@@ -970,6 +1154,17 @@
         <span>—</span>
         <span>준비중</span>
       </div>
+      <details class="changelog">
+        <summary>패치 내역</summary>
+        <ol class="log">
+          <!-- 새 버전이 나오면 <li> 를 복사해 *맨 위에* 붙여넣으세요.
+               맨 위 항목이 최신으로 간주되어 위 요약줄(.meta-row)에 자동 반영됩니다. -->
+          <li>
+            <span class="log-ver">—</span><span class="log-date">—</span>
+            <span class="log-note">작업중</span>
+          </li>
+        </ol>
+      </details>
       <div class="card-actions">
         <a class="btn btn-dl is-disabled" href="#" aria-disabled="true">준비중</a>
         <a class="btn btn-gh" href="#">GitHub</a>
@@ -1014,6 +1209,25 @@
     imgs[idx].classList.add('active');
     refreshCarousel(box);
   }
+
+  /* ------------------------------------------------------------------
+     패치 내역 → 요약줄(.meta-row) 자동 동기화
+     changelog 의 맨 위 <li> 가 최신 버전입니다.
+     새 버전을 맨 위에 추가하면 요약줄(버전 / 날짜 / 비고)이 알아서 바뀝니다.
+     ------------------------------------------------------------------ */
+  document.querySelectorAll('.card').forEach(card => {
+    const first = card.querySelector('.changelog .log li');
+    const meta = card.querySelector('.meta-row');
+    if (!first || !meta) return;
+    const pick = sel => {
+      const el = first.querySelector(sel);
+      return el ? el.textContent.trim() : '';
+    };
+    const vals = [pick('.log-ver'), pick('.log-date'), pick('.log-note')];
+    meta.querySelectorAll('span').forEach((sp, i) => {
+      if (vals[i]) sp.textContent = vals[i];
+    });
+  });
 
   document.querySelectorAll('.shot-carousel').forEach(box => {
     // 없는 이미지 정리
