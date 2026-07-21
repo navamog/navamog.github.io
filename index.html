@@ -438,6 +438,118 @@
     background: var(--accent);
     color: #1b1206;
   }
+  /* 오류 제보 버튼 — 카드마다 자동 생성됩니다 (data-repo 필요) */
+  .btn-report{
+    flex: 0 0 auto;
+    padding: 9px 12px;
+    background: transparent;
+    border: 1px solid var(--accent-dim);
+    color: var(--accent);
+  }
+  .btn-report:hover{ background: rgba(255,184,77,0.10); opacity: 1; }
+
+  /* ---------- 오류 제보 게시판 ---------- */
+  .board{
+    border-top: 1px solid var(--line);
+    padding: 40px 0 20px;
+  }
+  .board-head{
+    display:flex;
+    align-items: baseline;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 6px;
+  }
+  .board h2{
+    font-size: 19px;
+    font-weight: 600;
+    margin: 0;
+  }
+  .board-head a{
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 12px;
+    color: var(--ink-dim);
+    text-decoration: underline;
+    text-underline-offset: 3px;
+  }
+  .board-head a:hover{ color: var(--accent); }
+  .board-desc{
+    color: var(--ink-dim);
+    font-size: 13px;
+    margin: 0 0 18px;
+  }
+  .board-list{
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    border-top: 1px solid var(--line);
+  }
+  .board-list li{
+    border-bottom: 1px solid var(--line);
+    padding: 12px 2px;
+    display: flex;
+    gap: 10px;
+    align-items: baseline;
+    flex-wrap: wrap;
+  }
+  .issue-state{
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 10.5px;
+    padding: 2px 7px;
+    border-radius: 10px;
+    white-space: nowrap;
+  }
+  .issue-state.open{ background: rgba(255,184,77,0.15); color: var(--accent); }
+  .issue-state.closed{ background: rgba(85,179,137,0.15); color: #55b389; }
+  .issue-title{
+    flex: 1 1 200px;
+    font-size: 13.5px;
+    text-decoration: none;
+  }
+  .issue-title:hover{ color: var(--accent); }
+  .issue-meta{
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 11px;
+    color: var(--ink-dim);
+    white-space: nowrap;
+  }
+  .issue-no{
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 11px;
+    color: var(--ink-dim);
+    min-width: 34px;
+  }
+  .issue-game{
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 10.5px;
+    padding: 2px 7px;
+    border-radius: 10px;
+    background: rgba(255,184,77,0.12);
+    color: var(--accent);
+    white-space: nowrap;
+  }
+  .issue-body{
+    flex: 1 1 200px;
+    font-size: 13.5px;
+    color: var(--ink);
+  }
+  .issue-shot{
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 11px;
+    color: var(--ink-dim);
+    text-decoration: underline;
+    text-underline-offset: 3px;
+  }
+  .issue-shot:hover{ color: var(--accent); }
+
+  .board-msg{
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 12px;
+    color: var(--ink-dim);
+    padding: 18px 0;
+  }
+
   .btn-gh{
     background: transparent;
     border: 1px solid var(--line);
@@ -495,7 +607,7 @@
   <main class="grid" id="grid">
 
     <!-- ============ 존 오브 엔더스 ============ -->
-    <article class="card">
+    <article class="card" data-repo="navamog/ZoE-GBA">
       <div class="card-top">
         <div class="tag-group">
           <!-- 기종 배지: snes / md / ps1 / ps2 / sat / dc / gba / ws / etc -->
@@ -557,7 +669,7 @@
     </article>
 
     <!-- ============ 티어링 사가 ============ -->
-    <article class="card">
+    <article class="card" data-repo="navamog/TearRing-Saga-KOR">
       <div class="card-top">
         <div class="tag-group">
           <!-- 기종 배지: snes / md / ps1 / ps2 / sat / dc / gba / ws / etc -->
@@ -611,7 +723,7 @@
     </article>
 
     <!-- ============ 랑그릿사 2 ============ -->
-    <article class="card">
+    <article class="card" data-repo="navamog/Langrisser2-SFC-KOR">
       <div class="card-top">
         <div class="tag-group">
           <!-- 기종 배지: snes / md / ps1 / ps2 / sat / dc / gba / ws / etc -->
@@ -669,7 +781,7 @@
     </article>
 
     <!-- ============ 랑그릿사 밀레니엄 The Last Century ============ -->
-    <article class="card">
+    <article class="card" data-repo="navamog/langrisser-mil-ws">
       <div class="card-top">
         <div class="tag-group">
           <!-- 기종 배지: snes / md / ps1 / ps2 / sat / dc / gba / ws / etc -->
@@ -723,7 +835,7 @@
     </article>
 
     <!-- ============ 베르위크 사가 ============ -->
-    <article class="card">
+    <article class="card" data-repo="">
       <div class="card-top">
         <div class="tag-group">
           <!-- 기종 배지: snes / md / ps1 / ps2 / sat / dc / gba / ws / etc -->
@@ -779,7 +891,7 @@
     </article>
 
     <!-- ============ 파이어 엠블렘 - 비전 퀘스트 ============ -->
-    <article class="card">
+    <article class="card" data-repo="">
       <div class="card-top">
         <div class="tag-group">
           <!-- 기종 배지: snes / md / ps1 / ps2 / sat / dc / gba / ws / etc -->
@@ -835,7 +947,7 @@
     </article>
 
     <!-- ============ 파이어 엠블렘 - 모로우의 황금향 ============ -->
-    <article class="card">
+    <article class="card" data-repo="">
       <div class="card-top">
         <div class="tag-group">
           <!-- 기종 배지: snes / md / ps1 / ps2 / sat / dc / gba / ws / etc -->
@@ -898,11 +1010,11 @@
            3) img    : screenshots/○○○-01.jpg ... 경로 (없는 파일은 자동 숨김)
            4) 제목   : .game-title(한글) / .game-title-orig(원제 + 기종)
            5) 버튼   : 배포 시 btn-dl 에서 is-disabled 를 지우고 href 에 링크 입력
-         카드를 더 늘리려면 <article class="card"> ... </article> 블록을 통째로 복사하세요.
+         카드를 더 늘리려면 <article class="card" data-repo=""> ... </article> 블록을 통째로 복사하세요.
          ================================================================ -->
 
     <!-- ---------- 빈 카드 1 ---------- -->
-    <article class="card">
+    <article class="card" data-repo="">
       <div class="card-top">
         <div class="tag-group">
           <!-- 기종 배지: snes / md / ps1 / ps2 / sat / dc / gba / ws / etc -->
@@ -956,7 +1068,7 @@
     </article>
 
     <!-- ---------- 빈 카드 2 ---------- -->
-    <article class="card">
+    <article class="card" data-repo="">
       <div class="card-top">
         <div class="tag-group">
           <!-- 기종 배지: snes / md / ps1 / ps2 / sat / dc / gba / ws / etc -->
@@ -1010,7 +1122,7 @@
     </article>
 
     <!-- ---------- 빈 카드 3 ---------- -->
-    <article class="card">
+    <article class="card" data-repo="">
       <div class="card-top">
         <div class="tag-group">
           <!-- 기종 배지: snes / md / ps1 / ps2 / sat / dc / gba / ws / etc -->
@@ -1064,7 +1176,7 @@
     </article>
 
     <!-- ---------- 빈 카드 4 ---------- -->
-    <article class="card">
+    <article class="card" data-repo="">
       <div class="card-top">
         <div class="tag-group">
           <!-- 기종 배지: snes / md / ps1 / ps2 / sat / dc / gba / ws / etc -->
@@ -1118,7 +1230,7 @@
     </article>
 
     <!-- ---------- 빈 카드 5 ---------- -->
-    <article class="card">
+    <article class="card" data-repo="">
       <div class="card-top">
         <div class="tag-group">
           <!-- 기종 배지: snes / md / ps1 / ps2 / sat / dc / gba / ws / etc -->
@@ -1172,6 +1284,20 @@
     </article>
 
   </main>
+
+
+  <!-- ================= 오류 제보 게시판 =================
+       Google Form 으로 제보를 받고, 응답이 쌓이는 스프레드시트를 그대로 읽어 표시합니다.
+       별도 DB·서버가 필요 없습니다. 설정값은 페이지 하단 스크립트의 REPORT 부분 참고. -->
+  <section class="board">
+    <div class="board-head">
+      <h2>오류 제보</h2>
+      <a id="board-all" href="#" target="_blank" rel="noopener">제보하기 →</a>
+    </div>
+    <p class="board-desc">각 카드의 <b>제보</b> 버튼을 누르면 게임 제목이 미리 입력된 제보 양식이 열립니다. 접수된 제보는 아래에 순서대로 표시됩니다.</p>
+    <ul class="board-list" id="board-list"></ul>
+    <div class="board-msg" id="board-msg">불러오는 중…</div>
+  </section>
 
   <footer>
     <span>© 2026 NaVaMo Game Lab with 갓고미</span>
@@ -1228,6 +1354,141 @@
       if (vals[i]) sp.textContent = vals[i];
     });
   });
+
+  /* ==================================================================
+     오류 제보 — Google Form + Google Sheets (별도 DB·서버 불필요)
+
+     ① 제보 버튼 : 카드의 게임 제목이 미리 채워진 구글 폼이 열립니다.
+     ② 게시판    : 폼 응답이 쌓이는 스프레드시트를 읽어 목록으로 보여줍니다.
+
+     ▼ 아래 3개만 본인 것으로 채우면 끝입니다.
+     ================================================================== */
+  const REPORT = {
+    // 1) 구글 폼 주소 (주소창의 .../viewform 까지)
+    formUrl: 'https://docs.google.com/forms/d/e/1FAIpQLSfOHgb8eBZBQVXDff6AaezS4LITxvxTR22dLwghG4sxvOmKag/viewform',
+
+    // 2) '게임 제목' 문항의 entry ID
+    //    폼 편집 화면 → 우측 ⋮ → '미리 채워진 링크 가져오기' → 아무 값이나 입력 후
+    //    링크 복사 → 주소에 보이는 entry.1234567890 부분을 그대로 붙여넣으세요.
+    entryTitle: 'entry.1112620776',
+
+    // 3) 응답 스프레드시트 ID (시트 주소의 /d/ 와 /edit 사이 문자열)
+    sheetId: '1WG6QrMpMdXbqbhvngLA-wzOQB4JRAuYdUYYgOr0e4_Y',
+
+    // 응답이 쌓이는 시트 탭 이름 (보통 '설문지 응답 시트1')
+    sheetName: '설문지 응답 시트1',
+
+    maxRows: 20   // 게시판에 보여줄 최대 건수
+  };
+
+  // ---- 1) 카드마다 제보 버튼 생성 ----
+  function reportUrl(gameTitle){
+    return REPORT.formUrl + '?usp=pp_url&'
+      + REPORT.entryTitle + '=' + encodeURIComponent(gameTitle);
+  }
+
+  document.querySelectorAll('.card').forEach(card => {
+    const actions = card.querySelector('.card-actions');
+    const titleEl = card.querySelector('.game-title');
+    if (!actions || !titleEl) return;
+    const title = titleEl.textContent.trim();
+    if (!title || title === '(게임 제목)') return;   // 빈 템플릿 카드는 제외
+
+    const a = document.createElement('a');
+    a.className = 'btn btn-report';
+    a.href = reportUrl(title);
+    a.target = '_blank';
+    a.rel = 'noopener';
+    a.textContent = '제보';
+    a.title = title + ' 오류 제보하기';
+    actions.appendChild(a);
+  });
+
+  const boardAll = document.getElementById('board-all');
+  if (boardAll) boardAll.href = REPORT.formUrl;
+
+  // ---- 2) 게시판: 스프레드시트 읽어오기 ----
+  // 큰따옴표·줄바꿈·쉼표를 포함한 CSV를 안전하게 분해합니다.
+  function parseCSV(text){
+    const rows = [];
+    let row = [], val = '', q = false;
+    for (let i = 0; i < text.length; i++){
+      const c = text[i];
+      if (q){
+        if (c === '"'){
+          if (text[i+1] === '"'){ val += '"'; i++; }
+          else q = false;
+        } else val += c;
+      } else if (c === '"'){ q = true; }
+      else if (c === ','){ row.push(val); val = ''; }
+      else if (c === '\n'){ row.push(val); rows.push(row); row = []; val = ''; }
+      else if (c !== '\r'){ val += c; }
+    }
+    if (val !== '' || row.length){ row.push(val); rows.push(row); }
+    return rows;
+  }
+
+  // 헤더 이름으로 열을 찾습니다 (열 순서가 바뀌어도 동작).
+  function findCol(header, keys){
+    for (let i = 0; i < header.length; i++){
+      const h = (header[i] || '').replace(/\s/g, '');
+      if (keys.some(k => h.indexOf(k) !== -1)) return i;
+    }
+    return -1;
+  }
+
+  (function loadBoard(){
+    const list = document.getElementById('board-list');
+    const msg = document.getElementById('board-msg');
+    if (!list || !msg) return;
+
+    const url = 'https://docs.google.com/spreadsheets/d/' + REPORT.sheetId
+      + '/gviz/tq?tqx=out:csv&sheet=' + encodeURIComponent(REPORT.sheetName);
+
+    fetch(url)
+      .then(r => r.ok ? r.text() : Promise.reject(r.status))
+      .then(text => {
+        const rows = parseCSV(text).filter(r => r.some(c => c && c.trim()));
+        if (rows.length < 2){ msg.textContent = '아직 접수된 제보가 없습니다.'; return; }
+
+        const header = rows[0];
+        const cNo   = findCol(header, ['번호']);
+        const cDate = findCol(header, ['타임스탬프', '날짜', 'Timestamp']);
+        const cGame = findCol(header, ['게임', '제목']);
+        const cBody = findCol(header, ['내용', '증상']);
+        const cShot = findCol(header, ['스크린샷', '이미지', '첨부']);
+
+        const data = rows.slice(1).reverse().slice(0, REPORT.maxRows);   // 최신순
+        msg.style.display = 'none';
+
+        data.forEach((r, i) => {
+          const no = cNo >= 0 && r[cNo] ? r[cNo] : (rows.length - 1 - i);
+          const date = cDate >= 0 ? (r[cDate] || '').split(' ')[0] : '';
+          const game = cGame >= 0 ? r[cGame] : '';
+          const body = cBody >= 0 ? r[cBody] : '';
+          const shot = cShot >= 0 ? (r[cShot] || '').split(',')[0].trim() : '';
+
+          const li = document.createElement('li');
+          li.innerHTML =
+              '<span class="issue-no"></span>'
+            + (game ? '<span class="issue-game"></span>' : '')
+            + '<span class="issue-body"></span>'
+            + '<span class="issue-meta"></span>'
+            + (shot ? '<a class="issue-shot" target="_blank" rel="noopener">스크린샷</a>' : '');
+
+          li.querySelector('.issue-no').textContent = '#' + no;
+          if (game) li.querySelector('.issue-game').textContent = game;
+          li.querySelector('.issue-body').textContent = body;
+          li.querySelector('.issue-meta').textContent = date;
+          if (shot) li.querySelector('.issue-shot').href = shot;
+          list.appendChild(li);
+        });
+      })
+      .catch(() => {
+        msg.innerHTML = '제보 목록을 불러오지 못했습니다. '
+          + '시트가 <b>웹에 게시</b> 또는 <b>링크가 있는 모든 사용자 보기 가능</b> 상태인지 확인해 주세요.';
+      });
+  })();
 
   document.querySelectorAll('.shot-carousel').forEach(box => {
     // 없는 이미지 정리
